@@ -4,5 +4,8 @@
   "main": "index.js",
   "repository": "https://github.com/michaelkirschbaum/crawl.git",
   "author": "hi@michaelkirschbaum.com",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
 }
