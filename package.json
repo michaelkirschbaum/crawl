@@ -1,0 +1,8 @@
+{
+  "name": "crawl",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/michaelkirschbaum/crawl.git",
+  "author": "hi@michaelkirschbaum.com",
+  "license": "MIT"
+}
