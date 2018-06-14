@@ -3,7 +3,7 @@ const webpack = require("webpack");
 const bundlePath = path.resolve("/dist");
 
 module.exports = {
-  entry: "./src/app.js",
+  entry: "./src/index.js",
   module: {
     rules: [
       {
