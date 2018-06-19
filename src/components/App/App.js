@@ -2,6 +2,7 @@ import React, { Component, createContext } from 'react'
 import "./App.css"
 import { hot } from 'react-hot-loader'
 import Menu from "../Menu/Menu.js"
+import { Route } from 'react-router-dom'
 
 class App extends Component {
   render() {
