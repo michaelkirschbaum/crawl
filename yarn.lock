@@ -2634,6 +2634,10 @@ globby@^6.1.0:
     pify "^2.0.0"
     pinkie-promise "^2.0.0"
 
+google-protobuf@^3.2.0-rc.2:
+  version "3.5.0"
+  resolved "https://registry.yarnpkg.com/google-protobuf/-/google-protobuf-3.5.0.tgz#b8cc63c74d83457bd8a9a904503c8efb26bca339"
+
 graceful-fs@^4.1.11, graceful-fs@^4.1.2, graceful-fs@^4.1.4:
   version "4.1.11"
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.1.11.tgz#0e8bdfe4d1ddb8854d64e04ea7c00e2a026e5658"
@@ -5935,6 +5939,13 @@ tar@^4:
     safe-buffer "^5.1.2"
     yallist "^3.0.2"
 
+tensorjs@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/tensorjs/-/tensorjs-0.2.0.tgz#ce348937a0a3fa3e8ce885bb4b412b5054f969bb"
+  dependencies:
+    google-protobuf "^3.2.0-rc.2"
+    lodash "^4.17.4"
+
 test-exclude@^4.2.1:
   version "4.2.1"
   resolved "https://registry.yarnpkg.com/test-exclude/-/test-exclude-4.2.1.tgz#dfa222f03480bca69207ca728b37d74b45f724fa"
@@ -5944,6 +5955,12 @@ test-exclude@^4.2.1:
     object-assign "^4.1.0"
     read-pkg-up "^1.0.1"
     require-main-filename "^1.0.1"
+
+tfjs@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/tfjs/-/tfjs-0.6.0.tgz#370ee5d2112f573e63bbb70cd350b90677e119cc"
+  dependencies:
+    tensorjs "^0.2.0"
 
 throat@^4.0.0:
   version "4.1.0"

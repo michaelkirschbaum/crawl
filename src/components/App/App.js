@@ -1,14 +1,17 @@
 import React, { Component, createContext } from 'react'
 import "./App.css"
 import { hot } from 'react-hot-loader'
-import Menu from "../Menu/Menu.js"
-import { Route } from 'react-router-dom'
+import Menu from "../Menu/Menu"
+import Main from "../Main/Main"
+import Settings from "../Settings/Settings.js"
+import { Link, BrowserRouter as Router, Route } from 'react-router-dom'
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <div>
         <Menu />
+        <Main />
       </div>
     );
   }
