@@ -1,9 +1,8 @@
 import React, { Component, createContext } from 'react'
 import "./App.css"
 import { hot } from 'react-hot-loader'
-import Menu from "../Menu/Menu"
-import Main from "../Main/Main"
-import Settings from "../Settings/Settings.js"
+import Menu from "../menu/Menu"
+import Main from "../main/Main"
 import { Link, BrowserRouter as Router, Route } from 'react-router-dom'
 
 class App extends Component {

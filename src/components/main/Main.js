@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
-import Home from "../Home/Home.js"
-import Settings from "../Settings/Settings.js"
+import Dashboard from "../dashboard/Dashboard.js"
+import Account from "../account/Account.js"
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 class Main extends Component {
   render() {
     return (
       <Switch>
-        <Route exact path='/' component={Home}/>
-        <Route path='/settings' component={Settings}/>
+        <Route exact path='/' component={Dashboard}/>
+        <Route path='/account' component={Account}/>
       </Switch>
     );
   }

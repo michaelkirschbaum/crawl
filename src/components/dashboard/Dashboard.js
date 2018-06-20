@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import "./Home.css"
+import "./Dashboard.css"
 
-class Home extends Component {
+class Dashboard extends Component {
   render() {
     return (
       <div>
@@ -10,4 +10,4 @@ class Home extends Component {
   }
 }
 
-export default Home
+export default Dashboard
