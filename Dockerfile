@@ -3,6 +3,7 @@ FROM node:8
 WORKDIR /usr/src/crawlr
 
 COPY package.json ./
+COPY yarn.lock ./
 
 RUN yarn
 
