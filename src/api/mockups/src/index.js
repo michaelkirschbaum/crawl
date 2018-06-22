@@ -1,4 +1,4 @@
-var mockups = require('./api/mockups')
+var mockups = require('./api/mockups/mockups')
 
 var express = require('express')
 var app = express()
