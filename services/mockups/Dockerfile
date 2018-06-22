@@ -1,9 +1,12 @@
 FROM node:latest
 
-WORKDIR /usr/src/crawlr-mockups
+MKDIR /usr/src/crawlr
+WORKDIR /usr/src
 
-COPY package.json ./
-COPY yarn.lock ./
+ENV PATH /usr/src/node_modules/.bin:$PATH
+
+COPY package.json /usr/src/package.json
+COPY yarn.lock /usr/src/package.json
 
 RUN yarn
 
