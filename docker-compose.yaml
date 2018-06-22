@@ -1,7 +1,27 @@
 version: '2.1'
 
 services:
-  users-service:
-    container-name: users-service
-  mockups-service:
-    container-name: mockups-service
+  # users-service:
+  #   container_name: users-service
+  # mockups-service:
+  #   container_name: mockups-service
+  users-db:
+    container_name: users-db
+    build: ./services/users/src/db
+    ports:
+      - '5433:5432'
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+    healthcheck:
+      test: exit 0
+  mockups-db:
+    container_name: users-db
+    build: ./services/mockups/src/db
+    ports:
+      - '5433:5432'
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+    healthcheck:
+      test: exit 0
