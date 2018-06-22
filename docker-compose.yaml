@@ -8,7 +8,7 @@ services:
       - './services/users:/usr/src/app'
       - './services/users/package.json:/usr/src/package.json'
     ports:
-      - '8080:8080' # expose ports - HOST:CONTAINER
+      - '8080:8080'
     environment:
       - DATABASE_URL=postgres://postgres:postgres@users-db:5433/users_dev
       - DATABASE_TEST_URL=postgres://postgres:postgres@users-db:5433/users_test
@@ -26,7 +26,7 @@ services:
       - './services/mockups:/usr/src/app'
       - './services/mockups/package.json:/usr/src/package.json'
     ports:
-      - '8081:8080' # expose ports - HOST:CONTAINER
+      - '8081:8080'
     environment:
       - DATABASE_URL=postgres://postgres:postgres@mockups-db:5432/users_dev
       - DATABASE_TEST_URL=postgres://postgres:postgres@mockups-db:5432/users_test
@@ -57,3 +57,5 @@ services:
       - POSTGRES_PASSWORD=admin
     healthcheck:
       test: exit 0
+  # web:
+  # test:
