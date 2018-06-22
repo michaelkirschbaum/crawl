@@ -1,7 +1,7 @@
 version: '2.1'
 
 services:
-  users:
-    container-name: users
-  mockups:
-    container-name: mockups
+  users-service:
+    container-name: users-service
+  mockups-service:
+    container-name: mockups-service

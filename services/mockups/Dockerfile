@@ -1,6 +1,6 @@
-FROM node:8
+FROM node:latest
 
-WORKDIR /usr/src/crawlr
+WORKDIR /usr/src/crawlr-mockups
 
 COPY package.json ./
 COPY yarn.lock ./
@@ -11,4 +11,4 @@ COPY . .
 
 EXPOSE 8080
 
-CMD [ "node", "index.js" ]
+CMD [ "node", "src/index.js" ]
