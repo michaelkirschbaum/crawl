@@ -1,6 +1,6 @@
 FROM node:latest
 
-MKDIR /usr/src/crawlr
+RUN mkdir /usr/src/crawlr
 WORKDIR /usr/src
 
 ENV PATH /usr/src/node_modules/.bin:$PATH
