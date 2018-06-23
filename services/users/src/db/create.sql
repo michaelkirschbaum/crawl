@@ -1,2 +1,2 @@
-CREATE DATABASE mockups_test
+CREATE DATABASE users_test
 CREATE DATABASE users_dev
