@@ -6,7 +6,7 @@
   "author": "hi@michaelkirschbaum.com",
   "license": "MIT",
   "scripts": {
-    "start": "webpack-dev-server --mode development --hot",
+    "start": "webpack-dev-server --mode development --hot --host 0.0.0.0",
     "build": "webpack --mode development",
     "test": "jest"
   },
