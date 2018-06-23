@@ -57,5 +57,21 @@ services:
       - POSTGRES_PASSWORD=admin
     healthcheck:
       test: exit 0
-  # web:
-  # test:
+  web-service:
+    container_name: web-service
+    build: ./web/
+    volumes:
+      - './web:/usr/src/crawlr'
+      - '/usr/src/crawlr/node_modules'
+    ports:
+      - '3000:3000'
+    environment:
+      - NODE_ENV=${NODE_ENV}
+    depends_on:
+      users-service:
+        condition: service_started
+      mockups-service:
+        condition: service_started
+    links:
+      - users-service
+      - mockups-service
