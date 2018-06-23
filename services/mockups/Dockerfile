@@ -6,7 +6,7 @@ WORKDIR /usr/src
 ENV PATH /usr/src/node_modules/.bin:$PATH
 
 COPY package.json /usr/src/package.json
-COPY yarn.lock /usr/src/package.json
+COPY yarn.lock /usr/src/yarn.lock
 
 RUN yarn
 
