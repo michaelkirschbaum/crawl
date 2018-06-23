@@ -1,8 +1,8 @@
 {
-  "name": "crawl",
+  "name": "crawlr",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "https://github.com/michaelkirschbaum/crawl.git",
+  "repository": "https://github.com/michaelkirschbaum/crawlr.git",
   "author": "hi@michaelkirschbaum.com",
   "license": "MIT",
   "scripts": {
