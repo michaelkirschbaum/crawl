@@ -12,7 +12,7 @@ services:
     environment:
       - DATABASE_URL=postgres://postgres:postgres@users-db:5433/users_dev
       - DATABASE_TEST_URL=postgres://postgres:postgres@users-db:5433/users_test
-      - NODE_ENV=${NODE_ENV}
+      - NODE_ENV=development
       - TOKEN_SECRET=changeme
     depends_on:
       users-db:
@@ -30,7 +30,7 @@ services:
     environment:
       - DATABASE_URL=postgres://postgres:postgres@mockups-db:5432/users_dev
       - DATABASE_TEST_URL=postgres://postgres:postgres@mockups-db:5432/users_test
-      - NODE_ENV=${NODE_ENV}
+      - NODE_ENV=development
       - TOKEN_SECRET=changeme
     depends_on:
       mockups-db:
@@ -66,7 +66,7 @@ services:
     ports:
       - '3000:3000'
     environment:
-      - NODE_ENV=${NODE_ENV}
+      - NODE_ENV=development
     depends_on:
       users-service:
         condition: service_started

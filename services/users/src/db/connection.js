@@ -9,3 +9,5 @@ const connection = {
 }
 
 const db = pg(connection)
+
+module.exports = db
