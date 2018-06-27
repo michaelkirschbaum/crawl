@@ -5,7 +5,11 @@ class Upload extends Component {
   render() {
     return (
       <div className="Upload">
-        <h1>Upload</h1>
+        <form>
+          Design:
+          <input type="text" name="design"/>
+          <input type="submit" value="Submit" />
+        </form>
       </div>
     )
   }
