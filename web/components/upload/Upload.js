@@ -7,7 +7,7 @@ class Upload extends Component {
       <div className="Upload">
         <form>
           Design:
-          <input type="textarea" name="design"/>
+          <input type="file" name="design"/>
           <input type="submit" value="Submit" />
         </form>
       </div>
