@@ -1,26 +1,27 @@
 import React, { Component } from 'react'
+import axios, { post } from 'axios'
 import "./Upload.css"
 
 class Upload extends Component {
   constructor(props) {
     super(props)
-    this.state = {image: null}
-
-    this.handleSubmit = this.handleSubmit.bind(this)
+    this.state = {file: null}
+    this.onChange = this.onChange.bind(this)
   }
 
-  handleSubmit(event) {
-    alert('Upload was successful')
-    event.preventDefault()
+  onChange(event) {
+    this.setState({file: URL.createObjectURL(event.target.files[0])})
   }
 
   render() {
     return (
       <div className="Upload">
-        <form onSubmit={this.handleSubmit}>
-          <input type="file" name="design"/>
+        <form>
+          <input type="file" name="design" onChange={this.onChange} />
           <input type="submit" value="Submit" />
         </form>
+
+        <img src={this.state.file} />
       </div>
     )
   }
