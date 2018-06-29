@@ -8,6 +8,15 @@ Design tool that generates user interfaces given wireframes and illustrations us
 
 ## Deploy
 
-Run build command, push images to docker registry, and then run
+Push images to docker registry 
+
+    docker tag <container id> <username>/image
+    docker push <username>/image
+
+Create cluster
+
+    ecs-cli compose up --capability-iam
+    
+Run service
 
     ecs-cli compose --file docker-compose-ec2.yml up
