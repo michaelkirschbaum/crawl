@@ -16,7 +16,7 @@ Push images to docker registry
 
 Create cluster
 
-    ecs-cli compose up --capability-iam
+    ecs-cli compose up --capability-iam --size <number of instances> --instance-type <type>
     
 Run service
 
