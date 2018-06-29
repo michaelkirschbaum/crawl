@@ -1,12 +1,9 @@
-version: '3'
+version: '2'
 
 services:
   users-service:
     container_name: users-service
     image: michaelkirschbaum/users-service
-    volumes:
-      - './services/users:/usr/src/app'
-      - './services/users/package.json:/usr/src/package.json'
     ports:
       - '8080:8080'
     environment:
@@ -21,9 +18,6 @@ services:
   mockups-service:
     container_name: mockups-service
     image: michaelkirschbaum/mockups-service
-    volumes:
-      - './services/mockups:/usr/src/app'
-      - './services/mockups/package.json:/usr/src/package.json'
     ports:
       - '8081:8080'
     environment:
@@ -43,8 +37,6 @@ services:
     environment:
       - POSTGRES_USER=admin
       - POSTGRES_PASSWORD=admin
-    healthcheck:
-      test: exit 0
   mockups-db:
     container_name: mockups-db
     image: michaelkirschbaum/mockups-db
@@ -53,14 +45,9 @@ services:
     environment:
       - POSTGRES_USER=admin
       - POSTGRES_PASSWORD=admin
-    healthcheck:
-      test: exit 0
   web-service:
     container_name: web-service
     image: michaelkirschbaum/web-service
-    volumes:
-      - './web:/usr/src'
-      - '/usr/src/node_modules'
     ports:
       - '3000:3000'
     environment:
