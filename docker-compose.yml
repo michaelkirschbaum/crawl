@@ -1,4 +1,4 @@
-version: '2.1'
+version: '3'
 
 services:
   users-service:
@@ -15,8 +15,7 @@ services:
       - NODE_ENV=development
       - TOKEN_SECRET=changeme
     depends_on:
-      users-db:
-        condition: service_healthy
+      - users-db
     links:
       - users-db
   mockups-service:
@@ -33,8 +32,7 @@ services:
       - NODE_ENV=development
       - TOKEN_SECRET=changeme
     depends_on:
-      mockups-db:
-        condition: service_healthy
+      - mockups-db
     links:
       - mockups-db
   users-db:
@@ -68,10 +66,8 @@ services:
     environment:
       - NODE_ENV=development
     depends_on:
-      users-service:
-        condition: service_started
-      mockups-service:
-        condition: service_started
+      - users-service
+      - mockups-service
     links:
       - users-service
       - mockups-service

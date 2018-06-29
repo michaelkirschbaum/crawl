@@ -5,7 +5,9 @@
   "author": "Michael Kirschbaum",
   "license": "MIT",
   "dependencies": {
+    "chai": "^4.1.2",
     "express": "^4.16.3",
+    "mocha": "^5.2.0",
     "pg-promise": "^8.4.4"
   }
 }
