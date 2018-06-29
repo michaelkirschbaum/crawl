@@ -1,12 +1,12 @@
-# crawlr
+# Crawlr
 
-Crawlr is a design tool that generates user interfaces given wireframes and illustrations using artificial intelligence.
+Design tool that generates user interfaces given wireframes and illustrations using artificial intelligence.
 
-## build
+## Build
 
     docker-compose up --build
 
-## deploy
+## Deploy
 
 Run build command, push images to docker registry, and then run
 
