@@ -5,3 +5,9 @@ Crawlr is a design tool that generates user interfaces given wireframes and illu
 ## build
 
     docker-compose up --build
+
+## deploy
+
+Run build command, push images to docker registry, and then run
+
+    ecs-cli compose --file docker-compose-ec2.yml up
