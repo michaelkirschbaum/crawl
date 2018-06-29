@@ -3,7 +3,7 @@ version: '3'
 services:
   users-service:
     container_name: users-service
-    image: ./services/users/
+    image: michaelkirschbaum/users-service
     volumes:
       - './services/users:/usr/src/app'
       - './services/users/package.json:/usr/src/package.json'
@@ -20,7 +20,7 @@ services:
       - users-db
   mockups-service:
     container_name: mockups-service
-    image: ./services/mockups/
+    image: michaelkirschbaum/mockups-service
     volumes:
       - './services/mockups:/usr/src/app'
       - './services/mockups/package.json:/usr/src/package.json'
@@ -37,7 +37,7 @@ services:
       - mockups-db
   users-db:
     container_name: users-db
-    image: ./services/users/src/db
+    image: michaelkirschbaum/users-db
     ports:
       - '5433:5432'
     environment:
@@ -47,7 +47,7 @@ services:
       test: exit 0
   mockups-db:
     container_name: mockups-db
-    image: ./services/mockups/src/db
+    image: michaelkirschbaum/mockups-db
     ports:
       - '5434:5432'
     environment:
@@ -57,7 +57,7 @@ services:
       test: exit 0
   web-service:
     container_name: web-service
-    image: ./web/
+    image: michaelkirschbaum/web-service
     volumes:
       - './web:/usr/src'
       - '/usr/src/node_modules'
