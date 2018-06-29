@@ -10,6 +10,7 @@ Design tool that generates user interfaces given wireframes and illustrations us
 
 Push images to docker registry 
 
+    docker login
     docker tag <container id> <username>/image
     docker push <username>/image
 
