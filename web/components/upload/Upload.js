@@ -17,7 +17,8 @@ class Upload extends Component {
       <div className="Upload">
         <h1>Projects</h1>
         <form>
-          <input type="file" accept="image/png, image/jpeg" name="design" onChange={this.onChange} />
+          Name: <input type="text" name="name" /><br />
+          <input type="file" accept="image/png, image/jpeg" name="mockup" onChange={this.onChange} /><br />
           <input type="submit" value="Submit" />
         </form>
         <img src={this.state.file} />
