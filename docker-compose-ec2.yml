@@ -1,0 +1,74 @@
+version: '3'
+
+services:
+  users-service:
+    container_name: users-service
+    image: michaelkirschbaum/users-service
+    volumes:
+      - './services/users:/usr/src/app'
+      - './services/users/package.json:/usr/src/package.json'
+    ports:
+      - '8080:8080'
+    environment:
+      - DATABASE_URL=postgres://admin:admin@users-db:5433/users_dev
+      - DATABASE_TEST_URL=postgres://admin:admin@users-db:5433/users_test
+      - NODE_ENV=development
+      - TOKEN_SECRET=changeme
+    depends_on:
+      - users-db
+    links:
+      - users-db
+  mockups-service:
+    container_name: mockups-service
+    image: michaelkirschbaum/mockups-service
+    volumes:
+      - './services/mockups:/usr/src/app'
+      - './services/mockups/package.json:/usr/src/package.json'
+    ports:
+      - '8081:8080'
+    environment:
+      - DATABASE_URL=postgres://admin:admin@mockups-db:5432/users_dev
+      - DATABASE_TEST_URL=postgres://admin:admin@mockups-db:5432/users_test
+      - NODE_ENV=development
+      - TOKEN_SECRET=changeme
+    depends_on:
+      - mockups-db
+    links:
+      - mockups-db
+  users-db:
+    container_name: users-db
+    image: michaelkirschbaum/users-db
+    ports:
+      - '5433:5432'
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+    healthcheck:
+      test: exit 0
+  mockups-db:
+    container_name: mockups-db
+    image: michaelkirschbaum/mockups-db
+    ports:
+      - '5434:5432'
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+    healthcheck:
+      test: exit 0
+  web-service:
+    container_name: web-service
+    image: michaelkirschbaum/web-service
+    volumes:
+      - './web:/usr/src'
+      - '/usr/src/node_modules'
+    ports:
+      - '3000:3000'
+    environment:
+      - NODE_ENV=development
+    depends_on:
+      - users-service
+      - mockups-service
+    links:
+      - users-service
+      - mockups-service
+  # test:
