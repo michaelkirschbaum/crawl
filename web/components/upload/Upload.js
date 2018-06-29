@@ -15,8 +15,9 @@ class Upload extends Component {
   render() {
     return (
       <div className="Upload">
+        <h1>Projects</h1>
         <form>
-          <input type="file" name="design" onChange={this.onChange} />
+          <input type="file" accept="image/png, image/jpeg" name="design" onChange={this.onChange} />
           <input type="submit" value="Submit" />
         </form>
 

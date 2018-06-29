@@ -5,6 +5,7 @@ class Account extends Component {
   render() {
     return (
       <div className="Account">
+        <h1>Settings</h1>
       </div>
     );
   }
