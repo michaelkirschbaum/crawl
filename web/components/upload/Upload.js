@@ -20,7 +20,6 @@ class Upload extends Component {
           <input type="file" accept="image/png, image/jpeg" name="design" onChange={this.onChange} />
           <input type="submit" value="Submit" />
         </form>
-
         <img src={this.state.file} />
       </div>
     )
