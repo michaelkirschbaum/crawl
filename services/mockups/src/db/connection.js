@@ -1,4 +1,4 @@
-const pg = require('pg-promise')
+import mongoose from 'mongoose'
 
 const connection = {
   host: 'localhost'
