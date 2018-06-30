@@ -5,9 +5,11 @@
   "author": "Michael Kirschbaum",
   "license": "MIT",
   "dependencies": {
+    "aws-sdk": "^2.266.1",
     "chai": "^4.1.2",
     "express": "^4.16.3",
     "mocha": "^5.2.0",
+    "mongoose": "^5.1.7",
     "pg-promise": "^8.4.4",
     "tfjs": "^0.6.0"
   }
