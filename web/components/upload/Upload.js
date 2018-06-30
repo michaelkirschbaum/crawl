@@ -14,6 +14,8 @@ class Upload extends Component {
   }
 
   handleSubmit(event) {
+    
+
     alert("project submitted")
   }
 
@@ -21,11 +23,17 @@ class Upload extends Component {
     return (
       <div className="Upload">
         <h1>Projects</h1>
+
+        <ul>
+          <li></li>
+        </ul>
+
         <form onSubmit={this.handleSubmit}>
           Name: <input type="text" name="name" /><br />
           <input type="file" accept="image/png, image/jpeg" name="mockup" onChange={this.onChange} /><br />
           <input type="submit" value="Submit" />
         </form>
+
         <img src={this.state.file} />
       </div>
     )
