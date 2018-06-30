@@ -1,3 +1,5 @@
+var db = require('./connection')
+
 function addMockup() {
 
 }

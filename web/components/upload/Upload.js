@@ -14,7 +14,7 @@ class Upload extends Component {
   }
 
   handleSubmit(event) {
-    
+
 
     alert("project submitted")
   }
