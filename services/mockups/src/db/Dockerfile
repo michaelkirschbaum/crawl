@@ -14,4 +14,7 @@ RUN mkdir -p /data/db
 # expose port
 EXPOSE 27017
 
+# bind all addresses
+CMD ["--bind_ip_all"]
+
 ENTRYPOINT ["/usr/bin/mongod"]

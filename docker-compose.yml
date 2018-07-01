@@ -47,10 +47,7 @@ services:
     container_name: mockups-db
     build: ./services/mockups/src/db
     ports:
-      - '5434:27017'
-    environment:
-      - POSTGRES_USER=admin
-      - POSTGRES_PASSWORD=admin
+      - '27017:27017'
   web-service:
     container_name: web-service
     build: ./web/

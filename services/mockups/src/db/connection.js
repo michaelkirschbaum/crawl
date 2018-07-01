@@ -1,6 +1,6 @@
 var mongoose = require('mongoose')
 
-mongoose.connect('mongodb://localhost/test')
+mongoose.connect('mongodb://mockups-db/test')
 var db = mongoose.connection
 var schema = mongoose.Schema
 
