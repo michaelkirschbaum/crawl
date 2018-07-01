@@ -1,7 +1,7 @@
 var Mockup = require('./connection')
 
 function addMockup(req, res, next) {
-  const mockup = new Mockup({ name: 'project' })
+  const mockup = new Mockup({ name: 'project', uri: 'https://google.com' })
 
   mockup.save()
     .then(() => res.send('added'))
