@@ -6,8 +6,10 @@ class Upload extends Component {
     super(props)
     this.state = {
       name: '',
-      file: null
+      file: null,
+      projects: []
     }
+
     this.onChange = this.onChange.bind(this)
     this.onFileChange = this.onFileChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -17,7 +19,7 @@ class Upload extends Component {
     fetch('http://localhost:8081/mockups/get')
       .then((res) => res.json())
       .then((resJson) => {
-        return resJson
+        // setstate
       })
   }
 
