@@ -22,8 +22,17 @@ class Upload extends Component {
   }
 
   handleSubmit(event) {
-    fetch('http://localhost:8081/mockups/get')
-      .then((response) => alert(response))
+    fetch('http://localhost:8081/mockups/add', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name: 'test',
+        uri: 'test'
+      }),
+    })
   }
 
   render() {
