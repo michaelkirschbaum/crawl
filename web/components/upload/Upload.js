@@ -4,19 +4,46 @@ import "./Upload.css"
 class Upload extends Component {
   constructor(props) {
     super(props)
-    this.state = {file: null}
+    this.state = {
+      name: '',
+      file: null,
+      projects: []
+    }
     this.onChange = this.onChange.bind(this)
+    this.onFileChange = this.onFileChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  onChange(event) {
+  componentDidMount() {
+    fetch('http://localhost:8081/mockups/get')
+      .then((res) => res.json())
+      .then((projects) => {
+        projects.forEach(function(project) {
+          this.setState({ projects: [...this.state.projects, project]})
+        })
+      })
+  }
+
+  onFileChange(event) {
     this.setState({file: URL.createObjectURL(event.target.files[0])})
   }
 
+  onChange(event) {
+    this.setState({name: event.target.value})
+  }
+
   handleSubmit(event) {
-
-
-    alert("project submitted")
+    fetch('http://localhost:8081/mockups/add', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name: this.state.name,
+        uri: this.state.file
+      }),
+    })
   }
 
   render() {
@@ -24,13 +51,9 @@ class Upload extends Component {
       <div className="Upload">
         <h1>Projects</h1>
 
-        <ul>
-          <li></li>
-        </ul>
-
         <form onSubmit={this.handleSubmit}>
-          Name: <input type="text" name="name" /><br />
-          <input type="file" accept="image/png, image/jpeg" name="mockup" onChange={this.onChange} /><br />
+          Name: <input type="text" name="name" onChange={this.onChange} /><br />
+          <input type="file" accept="image/png, image/jpeg" name="mockup" onChange={this.onFileChange} /><br />
           <input type="submit" value="Submit" />
         </form>
 
