@@ -9,7 +9,6 @@ class Upload extends Component {
       file: null,
       projects: []
     }
-
     this.onChange = this.onChange.bind(this)
     this.onFileChange = this.onFileChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -18,8 +17,10 @@ class Upload extends Component {
   componentDidMount() {
     fetch('http://localhost:8081/mockups/get')
       .then((res) => res.json())
-      .then((resJson) => {
-        // setstate
+      .then((projects) => {
+        projects.forEach(function(project) {
+          this.setState({ projects: [...this.state.projects, project]})
+        })
       })
   }
 
@@ -49,10 +50,6 @@ class Upload extends Component {
     return (
       <div className="Upload">
         <h1>Projects</h1>
-
-        <ul>
-          <li></li>
-        </ul>
 
         <form onSubmit={this.handleSubmit}>
           Name: <input type="text" name="name" onChange={this.onChange} /><br />
