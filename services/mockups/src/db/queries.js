@@ -1,11 +1,17 @@
-var db = require('./connection')
+var Mockup = require('./connection')
 
 function addMockup(req, res, next) {
-  res.send('mockup added')
+  const mockup = new Mockup({ name: 'project' })
+
+  mockup.save()
+    .then(() => res.send('added'))
 }
 
 function getMockup(req,res, next) {
-  res.send('received mockup')
+  Mockup.find(function(err, mockups) {
+    if (err) return console.log(err)
+    res.send(mockups)
+  })
 }
 
 module.exports = {
