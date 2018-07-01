@@ -9,8 +9,16 @@ class Upload extends Component {
       file: null
     }
     this.onChange = this.onChange.bind(this)
+    this.onFileChange = this.onFileChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
-    this.onChange = this.onChange.bind(this)
+  }
+
+  componentDidMount() {
+    fetch('http://localhost:8081/mockups/get')
+      .then((res) => res.json())
+      .then((resJson) => {
+        return resJson
+      })
   }
 
   onFileChange(event) {
@@ -29,8 +37,8 @@ class Upload extends Component {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        name: 'test',
-        uri: 'test'
+        name: this.state.name,
+        uri: this.state.file
       }),
     })
   }
@@ -46,7 +54,7 @@ class Upload extends Component {
 
         <form onSubmit={this.handleSubmit}>
           Name: <input type="text" name="name" onChange={this.onChange} /><br />
-          <input type="file" accept="image/png, image/jpeg" name="mockup" onFileChange={this.onFileChange} /><br />
+          <input type="file" accept="image/png, image/jpeg" name="mockup" onChange={this.onFileChange} /><br />
           <input type="submit" value="Submit" />
         </form>
 

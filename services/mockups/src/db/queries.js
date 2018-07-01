@@ -4,7 +4,7 @@ function addMockup(req, res, next) {
   const mockup = new Mockup({ name: req.body.name, uri: req.body.uri })
 
   mockup.save()
-    .then(() => res.send('added'))
+    .then(() => res.send('added mockup'))
 }
 
 function getMockup(req,res, next) {
