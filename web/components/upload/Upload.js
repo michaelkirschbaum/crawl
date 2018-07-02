@@ -54,7 +54,7 @@ class Upload extends Component {
 
         <ul>
           {this.state.projects.map(project => {
-              return <li key={`project-${project.id}`}>{project.name} {project.uri}</li>
+              return <li>{project.name} {project.uri}</li>
           })}
         </ul>
 
