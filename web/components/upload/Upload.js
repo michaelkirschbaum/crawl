@@ -17,9 +17,11 @@ class Upload extends Component {
 
   componentDidMount() {
     fetch('http://localhost:8081/mockups/get')
-      .then((res) => res.json())
-      .then((projects) => {
-        this.setState({projects: projects})
+      .then(res => res.json())
+      .then(resJson => {
+        this.setState({
+          projects: resJson
+        })
       })
   }
 
@@ -49,6 +51,12 @@ class Upload extends Component {
     return (
       <div className="Upload">
         <h1>Projects</h1>
+
+        <ul>
+          {this.state.projects.map(project => {
+              return <li key={`project-${project.id}`}>{project.name} {project.uri}</li>
+          })}
+        </ul>
 
         <form onSubmit={this.handleSubmit}>
           Name: <input type="text" name="name" onChange={this.onChange} /><br />
