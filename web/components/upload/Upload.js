@@ -9,7 +9,6 @@ class Upload extends Component {
       file: null,
       projects: []
     }
-
     this.onChange = this.onChange.bind(this)
     this.onFileChange = this.onFileChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
