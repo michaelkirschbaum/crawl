@@ -16,10 +16,10 @@ class Upload extends Component {
 
   componentDidMount() {
     fetch('http://localhost:8081/mockups/get')
-      .then((res) => res.json())
-      .then((projects) => {
-        projects.forEach(function(project) {
-          this.setState({ projects: [...this.state.projects, project]})
+      .then(res => res.json())
+      .then(resJson => {
+        this.setState({
+          projects: resJson
         })
       })
   }
@@ -50,6 +50,12 @@ class Upload extends Component {
     return (
       <div className="Upload">
         <h1>Projects</h1>
+
+        <ul>
+          {this.state.projects.map(project => {
+              return <li>{project.name} {project.uri}</li>
+          })}
+        </ul>
 
         <form onSubmit={this.handleSubmit}>
           Name: <input type="text" name="name" onChange={this.onChange} /><br />
