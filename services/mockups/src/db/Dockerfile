@@ -17,4 +17,7 @@ EXPOSE 27017
 # bind all addresses
 CMD ["--bind_ip_all"]
 
+# init script
+# COPY create.sh /docker-entrypoint-initdb.d/
+
 ENTRYPOINT ["/usr/bin/mongod"]

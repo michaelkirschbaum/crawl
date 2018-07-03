@@ -1,6 +1,6 @@
 var mongoose = require('mongoose')
 
-mongoose.connect('mongodb://mockups-db/test')
+mongoose.connect('mongodb://mockups-db/mockups_dev')
 
 var db = mongoose.connection
 
