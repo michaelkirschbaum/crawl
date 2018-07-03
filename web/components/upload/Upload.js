@@ -58,8 +58,8 @@ class Upload extends Component {
         </ul>
 
         <form onSubmit={this.handleSubmit}>
-          Name: <input type="text" name="name" onChange={this.onChange} /><br />
-          <input type="file" accept="image/png, image/jpeg" name="mockup" onChange={this.onFileChange} /><br />
+          Name: <input type="text" name="name" onChange={this.onChange} />
+          <input type="file" accept="image/png, image/jpeg" name="mockup" onChange={this.onFileChange} />
           <input type="submit" value="Submit" />
         </form>
 
