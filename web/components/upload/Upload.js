@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-import AWS from 'aws-sdk'
-import uuid from 'uuid'
 import "./Upload.css"
 
 class Upload extends Component {
@@ -35,10 +33,6 @@ class Upload extends Component {
   }
 
   handleSubmit(event) {
-    var s3 = new AWS.S3()
-
-    var bucketName = 'crawlr' + uuid.v4()
-
     fetch('http://localhost:8081/mockups/add', {
       method: 'POST',
       headers: {
