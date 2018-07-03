@@ -20,12 +20,12 @@ function addMockup(req, res, next) {
   var uri = ''
   var uploadParams = {
     Bucket: bucketName,
-    Key: path.basename(req.body.uri),
+    Key: path.basename(req.body.file),
     Body: ''
   }
 
   /*
-  var fileStream = fs.createReadStream(file);
+  var fileStream = fs.createReadStream(req.body.file);
   fileStream.on('error', function(err) {
     console.log('File Error', err);
   });
@@ -34,10 +34,10 @@ function addMockup(req, res, next) {
 
   s3.upload(uploadParamas, function(err, data) {
     if (err) console.log("error uploading to s3", err)
-    else uri = data.Location
+    else location = data.Location
   })
 
-  const mockup = new Mockup({ name: req.body.name, uri: uri })
+  const mockup = new Mockup({ name: req.body.name, uri: location })
   mockup.save()
     .then(() => res.send('added mockup'))
 }
