@@ -10,7 +10,6 @@ AWS.config.update({
 
 var s3 = new AWS.S3()
 var bucketName = 'crawlr' + uuid.v4()
-var uri = null
 
 s3.createBucket({Bucket: bucketName}, function(err, data) {
   if (err) console.log(err, err.stack)
@@ -18,27 +17,27 @@ s3.createBucket({Bucket: bucketName}, function(err, data) {
 })
 
 function addMockup(req, res, next) {
+  var uri = ''
   var uploadParams = {
     Bucket: bucketName,
     Key: path.basename(req.body.uri),
     Body: ''
   }
 
-/*
+  /*
   var fileStream = fs.createReadStream(file);
   fileStream.on('error', function(err) {
     console.log('File Error', err);
   });
   uploadParams.Body = fileStream;
-*/
+  */
 
   s3.upload(uploadParamas, function(err, data) {
     if (err) console.log("error uploading to s3", err)
-    else console.log("upload successful", data.Location)
+    else uri = data.Location
   })
 
-  const mockup = new Mockup({ name: req.body.name, uri: req.body.uri })
-  console.log(uploadParams.Key)
+  const mockup = new Mockup({ name: req.body.name, uri: uri })
   mockup.save()
     .then(() => res.send('added mockup'))
 }
