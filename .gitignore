@@ -3,3 +3,4 @@ dist
 yarn-error.log
 .gitignore
 .elasticbeanstalk
+.nyc_output
