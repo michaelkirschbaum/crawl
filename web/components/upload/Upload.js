@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import AWS from 'aws-sdk'
+import uuid from 'uuid'
 import "./Upload.css"
 
 class Upload extends Component {
@@ -33,6 +35,10 @@ class Upload extends Component {
   }
 
   handleSubmit(event) {
+    var s3 = new AWS.S3()
+
+    var bucketName = 'crawlr' + uuid.v4()
+
     fetch('http://localhost:8081/mockups/add', {
       method: 'POST',
       headers: {
@@ -58,8 +64,8 @@ class Upload extends Component {
         </ul>
 
         <form onSubmit={this.handleSubmit}>
-          Name: <input type="text" name="name" onChange={this.onChange} /><br />
-          <input type="file" accept="image/png, image/jpeg" name="mockup" onChange={this.onFileChange} /><br />
+          Name: <input type="text" name="name" onChange={this.onChange} />
+          <input type="file" accept="image/png, image/jpeg" name="mockup" onChange={this.onFileChange} />
           <input type="submit" value="Submit" />
         </form>
 
