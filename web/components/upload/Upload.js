@@ -41,7 +41,7 @@ class Upload extends Component {
       },
       body: JSON.stringify({
         name: this.state.name,
-        uri: this.state.file
+        file: this.state.file
       }),
     })
   }
