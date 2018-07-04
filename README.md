@@ -2,6 +2,10 @@
 
 Design tool that generates user interfaces given wireframes and illustrations using artificial intelligence.
 
+## Configure
+
+Set AWS credentials in ~/.aws/credentials
+
 ## Build
 
     docker-compose up --build
