@@ -15,6 +15,7 @@ class Upload extends Component {
   }
 
   componentDidMount() {
+    // get projects
     fetch('http://localhost:8081/mockups/get')
       .then(res => res.json())
       .then(resJson => {
@@ -33,6 +34,7 @@ class Upload extends Component {
   }
 
   handleSubmit(event) {
+    // upload project
     fetch('http://localhost:8081/mockups/add', {
       method: 'POST',
       headers: {
