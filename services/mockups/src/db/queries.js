@@ -17,27 +17,25 @@ s3.createBucket({Bucket: bucketName}, function(err, data) {
 })
 
 function addMockup(req, res, next) {
-  var uri = ''
+  var uploadLocation = ''
   var uploadParams = {
     Bucket: bucketName,
     Key: path.basename(req.body.file),
     Body: ''
   }
 
-  /*
   var fileStream = fs.createReadStream(req.body.file);
   fileStream.on('error', function(err) {
     console.log('File Error', err);
   });
   uploadParams.Body = fileStream;
-  */
 
-  s3.upload(uploadParamas, function(err, data) {
+  s3.upload(uploadParams, function(err, data) {
     if (err) console.log("error uploading to s3", err)
-    else location = data.Location
+    else uploadLocation = data.Location
   })
 
-  const mockup = new Mockup({ name: req.body.name, uri: location })
+  const mockup = new Mockup({ name: req.body.name, uri: uploadLocation })
   mockup.save()
     .then(() => res.send('added mockup'))
 }
