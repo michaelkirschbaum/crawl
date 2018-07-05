@@ -34,16 +34,34 @@ class Upload extends Component {
     this.setState({name: event.target.value})
   }
 
-  handleSubmit(event) {
-    // upload project
-    getSignedRequest(this.state.file)
-  }
-
   getSignedRequest(file) {
-    fetch(`http:localhost:8081/mockups/signUrl?fileName=${this.state.file.name}`)
+    fetch(`http:localhost:8081/mockups/signUrl?fileName=${file.name}`)
       .then(res => {
         if (!res.ok) throw new Error(`${res.status}: ${res.statusText}`)
         return res.json()
+      })
+  }
+
+  uploadFile(file, signedRequest, url) {
+    const options = {
+      method: 'PUT',
+      body: file
+    }
+    return fetch(signedRequest, options)
+      .then(res => {
+        if (!res.ok) throw new Error(`${res.status}: ${res.statusText}`)
+        return url
+      })
+  }
+
+  handleSubmit(event) {
+    this.getSignedRequest(this.state.file)
+      .then(res => this.uploadFile(this.state.file, res.signedRequest, res.url))
+      .then(url => {
+        alert(url)
+      })
+      .catch(err => {
+        console.error(err)
       })
   }
 
