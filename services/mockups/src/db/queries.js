@@ -4,6 +4,7 @@ var uuid = require('uuid')
 var path = require('path')
 var fs = require('fs')
 
+// initiate s3
 AWS.config.update({
   region: 'us-west-2'
 })
@@ -23,18 +24,19 @@ function addMockup(req, res, next) {
     Key: path.basename(req.body.file),
     Body: ''
   }
-
+/*
   var fileStream = fs.createReadStream(req.body.file);
   fileStream.on('error', function(err) {
     console.log('File Error', err);
   });
   uploadParams.Body = fileStream;
-
+*/
   s3.upload(uploadParams, function(err, data) {
     if (err) console.log("error uploading to s3", err)
     else uploadLocation = data.Location
   })
 
+  // save location of file in s3
   const mockup = new Mockup({ name: req.body.name, uri: uploadLocation })
   mockup.save()
     .then(() => res.send('added mockup'))
