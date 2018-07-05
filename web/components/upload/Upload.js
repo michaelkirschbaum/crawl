@@ -40,7 +40,7 @@ class Upload extends Component {
   }
 
   getSignedRequest(file) {
-    fetch(`http:localhost:8081/mockups/signUrl?name=${this.state.file.name}`)
+    fetch(`http:localhost:8081/mockups/signUrl?fileName=${this.state.file.name}`)
       .then(res => {
         if (!res.ok) throw new Error(`${res.status}: ${res.statusText}`)
         return res.json()
