@@ -9,6 +9,7 @@ class Upload extends Component {
       file: null,
       projects: []
     }
+
     this.onChange = this.onChange.bind(this)
     this.onFileChange = this.onFileChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -26,7 +27,7 @@ class Upload extends Component {
   }
 
   onFileChange(event) {
-    this.setState({file: URL.createObjectURL(event.target.files[0])})
+    this.setState({file: event.target.files[0]})
   }
 
   onChange(event) {
@@ -35,17 +36,15 @@ class Upload extends Component {
 
   handleSubmit(event) {
     // upload project
-    fetch('http://localhost:8081/mockups/add', {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        name: this.state.name,
-        file: this.state.file
-      }),
-    })
+    getSignedRequest(this.state.file)
+  }
+
+  getSignedRequest(file) {
+    fetch(`http:localhost:8081/mockups/signUrl?name=${this.state.file.name}`)
+      .then(res => {
+        if (!res.ok) throw new Error(`${res.status}: ${res.statusText}`)
+        return res.json()
+      })
   }
 
   render() {
