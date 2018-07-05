@@ -13,6 +13,8 @@ class Upload extends Component {
     this.onChange = this.onChange.bind(this)
     this.onFileChange = this.onFileChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.getSignedRequest = this.getSignedRequest.bind(this)
+    this.uploadFile = this.uploadFile.bind(this)
   }
 
   componentDidMount() {
