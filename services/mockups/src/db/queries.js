@@ -1,8 +1,6 @@
 var Mockup = require('./connection')
 var AWS = require('aws-sdk')
 var uuid = require('uuid')
-var path = require('path')
-var fs = require('fs')
 
 // initiate s3
 AWS.config.update({
@@ -17,25 +15,26 @@ s3.createBucket({Bucket: bucketName}, function(err, data) {
   else console.log("created new s3 bucket", data.Location)
 })
 
-function addMockup(req, res, next) {
-  var uploadLocation = ''
-  var uploadParams = {
-    Bucket: bucketName,
-    Key: path.basename(req.body.file),
-    Body: ''
-  }
-/*
-  var fileStream = fs.createReadStream(req.body.file);
-  fileStream.on('error', function(err) {
-    console.log('File Error', err);
-  });
-  uploadParams.Body = fileStream;
-*/
-  s3.upload(uploadParams, function(err, data) {
-    if (err) console.log("error uploading to s3", err)
-    else uploadLocation = data.Location
-  })
+function signUrl(req, res, next) {
+  const { fileName } = req.query
 
+  var s3Params = {
+    Bucket: bucketName,
+    Key: fileName
+  }
+  s3.getSignedUrl('putObject', s3Params, (err, data) => {
+    if (err) {
+      console.error(err)
+    } else {
+      res.json({
+        signedRequest: data,
+        url: `https://${bucketName}.s3.amazonaws.com/${fileName}`
+      })
+    }
+  })
+}
+
+function addMockup(req, res, next) {
   // save location of file in s3
   const mockup = new Mockup({ name: req.body.name, uri: uploadLocation })
   mockup.save()
@@ -51,5 +50,6 @@ function getMockup(req,res, next) {
 
 module.exports = {
   addMockup: addMockup,
+  signUrl: signUrl,
   getMockup: getMockup
 }

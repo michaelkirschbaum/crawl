@@ -9,9 +9,12 @@ class Upload extends Component {
       file: null,
       projects: []
     }
+
     this.onChange = this.onChange.bind(this)
     this.onFileChange = this.onFileChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.getSignedRequest = this.getSignedRequest.bind(this)
+    this.uploadFile = this.uploadFile.bind(this)
   }
 
   componentDidMount() {
@@ -26,26 +29,42 @@ class Upload extends Component {
   }
 
   onFileChange(event) {
-    this.setState({file: URL.createObjectURL(event.target.files[0])})
+    this.setState({file: event.target.files[0]})
   }
 
   onChange(event) {
     this.setState({name: event.target.value})
   }
 
+  getSignedRequest(file) {
+    fetch(`http:localhost:8081/mockups/signUrl?fileName=${file.name}`)
+      .then(res => {
+        if (!res.ok) throw new Error(`${res.status}: ${res.statusText}`)
+        return res.json()
+      })
+  }
+
+  uploadFile(file, signedRequest, url) {
+    const options = {
+      method: 'PUT',
+      body: file
+    }
+    return fetch(signedRequest, options)
+      .then(res => {
+        if (!res.ok) throw new Error(`${res.status}: ${res.statusText}`)
+        return url
+      })
+  }
+
   handleSubmit(event) {
-    // upload project
-    fetch('http://localhost:8081/mockups/add', {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        name: this.state.name,
-        file: this.state.file
-      }),
-    })
+    this.getSignedRequest(this.state.file)
+      .then(res => this.uploadFile(this.state.file, res.signedRequest, res.url))
+      .then(url => {
+        alert(url)
+      })
+      .catch(err => {
+        console.error(err)
+      })
   }
 
   render() {
