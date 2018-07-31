@@ -34,7 +34,6 @@ class Upload extends Component {
     this.setState({name: event.target.value})
   }
 
-  }
   handleSubmit(event) {
     fetch(`http://localhost:8081/mockups/signUrl?fileName=${this.state.file.name}`)
   }
