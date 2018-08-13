@@ -28,6 +28,9 @@ class Upload extends Component {
 
   onFileChange(event) {
     this.setState({file: event.target.files[0]})
+    fetch(`http://localhost:8081/mockups/signUrl?fileName=${event.target.files[0]}`)
+      .then(res => res.json())
+      .then(resJson => null)
   }
 
   onChange(event) {
@@ -35,7 +38,7 @@ class Upload extends Component {
   }
 
   handleSubmit(event) {
-    fetch(`http://localhost:8081/mockups/signUrl?fileName=${this.state.file.name}`)
+
   }
 
   render() {
