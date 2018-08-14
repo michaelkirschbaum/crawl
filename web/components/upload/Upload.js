@@ -7,7 +7,8 @@ class Upload extends Component {
     this.state = {
       name: '',
       file: null,
-      projects: []
+      projects: [],
+      signedUrl: ''
     }
 
     this.onChange = this.onChange.bind(this)
@@ -20,9 +21,7 @@ class Upload extends Component {
     fetch('http://localhost:8081/mockups/get')
       .then(res => res.json())
       .then(resJson => {
-        this.setState({
-          projects: resJson
-        })
+        this.setState({ projects: resJson })
       })
   }
 
@@ -36,7 +35,9 @@ class Upload extends Component {
           throw new error('request failed')
         }
       })
-      .then(resJson => null)
+      .then(resJson => {
+        this.setState({ signedUrl: resJson.signedRequest })
+      })
       .catch(err => {
         console.log(err)
       })
@@ -67,7 +68,7 @@ class Upload extends Component {
           <input type="submit" value="Submit" />
         </form>
 
-        <img src={this.state.file} />
+        {/* <img src={this.state.file} /> */}
       </div>
     )
   }
