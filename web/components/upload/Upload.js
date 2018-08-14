@@ -29,8 +29,17 @@ class Upload extends Component {
   onFileChange(event) {
     this.setState({file: event.target.files[0]})
     fetch(`http://localhost:8081/mockups/signUrl?fileName=${event.target.files[0]}`)
-      .then(res => res.json())
+      .then(res => {
+        if (res.ok) {
+          return res.json()
+        } else {
+          throw new error('request failed')
+        }
+      })
       .then(resJson => null)
+      .catch(err => {
+        console.log(err)
+      })
   }
 
   onChange(event) {
