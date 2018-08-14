@@ -23,10 +23,13 @@ class Upload extends Component {
       .then(resJson => {
         this.setState({ projects: resJson })
       })
+      .catch(err => console.log(err))
   }
 
   onFileChange(event) {
     this.setState({file: event.target.files[0]})
+
+    // request pre-signed url
     fetch(`http://localhost:8081/mockups/signUrl?fileName=${event.target.files[0]}`)
       .then(res => {
         if (res.ok) {
@@ -38,9 +41,7 @@ class Upload extends Component {
       .then(resJson => {
         this.setState({ signedUrl: resJson.signedRequest })
       })
-      .catch(err => {
-        console.log(err)
-      })
+      .catch(err => console.log(err))
   }
 
   onChange(event) {
@@ -48,7 +49,14 @@ class Upload extends Component {
   }
 
   handleSubmit(event) {
-
+    // upload image to s3
+    fetch(this.state.signedUrl, {
+      method: "POST",
+      body: this.state.file
+    })
+    .then(res => res.json())
+    .then(success => console.log('image uploaded successfully'))
+    .catch(error => console.log('image upload failed'))
   }
 
   render() {
@@ -67,8 +75,6 @@ class Upload extends Component {
           <input type="file" accept="image/png, image/jpeg" name="mockup" onChange={this.onFileChange} />
           <input type="submit" value="Submit" />
         </form>
-
-        {/* <img src={this.state.file} /> */}
       </div>
     )
   }
