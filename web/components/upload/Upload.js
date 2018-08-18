@@ -31,7 +31,7 @@ class Upload extends Component {
     this.setState({file: event.target.files[0]})
 
     // request pre-signed url
-    fetch(`http://localhost:8081/mockups/signUrl?fileName=${event.target.files[0]}`)
+    fetch(`http://localhost:8081/mockups/signUrl?fileName=${event.target.files[0].name}`)
       .then(res => {
         if (res.ok) {
           return res.json()
