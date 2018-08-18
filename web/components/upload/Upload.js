@@ -27,6 +27,7 @@ class Upload extends Component {
   }
 
   onFileChange(event) {
+    // set file
     this.setState({file: event.target.files[0]})
 
     // request pre-signed url
@@ -49,14 +50,16 @@ class Upload extends Component {
   }
 
   handleSubmit(event) {
+    event.preventDefault()
+
     // upload image to s3
     fetch(this.state.signedUrl, {
       method: "POST",
       body: this.state.file
     })
-    .then(res => res.json())
-    .then(success => console.log('image uploaded successfully'))
-    .catch(error => console.log('image upload failed'))
+    .then(res => {
+      if (!res.ok) throw new Error(`${response.status}: ${response.statusText}`)
+    })
   }
 
   render() {
