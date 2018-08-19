@@ -11,17 +11,21 @@ var s3 = new AWS.S3()
 var bucketName = 'crawlr' + uuid.v4()
 
 s3.createBucket({Bucket: bucketName}, function(err, data) {
-  if (err) console.log(err, err.stack)
-  else console.log("created new s3 bucket", data.Location)
+  if (err)
+    console.log(err, err.stack)
+  else
+    console.log("created new s3 bucket", data.Location)
 })
 
 function signUrl(req, res, next) {
-  const { fileName } = req.query
+  const { fileName, fileType } = req.query
 
   var s3Params = {
     Bucket: bucketName,
-    Key: fileName
+    Key: fileName,
+    ContentType: fileType
   }
+
   s3.getSignedUrl('putObject', s3Params, (err, data) => {
     if (err) {
       console.error(err)
