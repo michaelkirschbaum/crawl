@@ -60,9 +60,9 @@ class Upload extends Component {
 
     // upload image to s3
     fetch(this.state.signedUrl, options)
-    .then(res => {
-      if (!res.ok) throw new Error(`${response.status}: ${response.statusText}`)
-    })
+      .then(res => {
+        if (!res.ok) throw new Error(`${response.status}: ${response.statusText}`)
+      })
   }
 
   render() {
