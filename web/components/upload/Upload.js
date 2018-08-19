@@ -53,7 +53,7 @@ class Upload extends Component {
     event.preventDefault()
 
     var options = {
-      method: "POST",
+      method: "PUT",
       body: this.state.file,
       headers: { 'Content-Type': this.state.file.type }
     }
