@@ -52,11 +52,14 @@ class Upload extends Component {
   handleSubmit(event) {
     event.preventDefault()
 
-    // upload image to s3
-    fetch(this.state.signedUrl, {
+    var options = {
       method: "POST",
-      body: this.state.file
-    })
+      body: this.state.file,
+      headers: { 'Content-Type': this.state.file.type }
+    }
+
+    // upload image to s3
+    fetch(this.state.signedUrl, options)
     .then(res => {
       if (!res.ok) throw new Error(`${response.status}: ${response.statusText}`)
     })
