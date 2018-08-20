@@ -8,7 +8,8 @@ class Upload extends Component {
       name: '',
       file: null,
       projects: [],
-      signedUrl: ''
+      signedUrl: '',
+      url: ''
     }
 
     this.onChange = this.onChange.bind(this)
@@ -41,6 +42,7 @@ class Upload extends Component {
       })
       .then(resJson => {
         this.setState({ signedUrl: resJson.signedRequest })
+        this.setState({ url: resJson.url })
       })
       .catch(err => console.log(err))
   }
@@ -63,6 +65,9 @@ class Upload extends Component {
       .then(res => {
         if (!res.ok) throw new Error(`${response.status}: ${response.statusText}`)
       })
+
+    fetch(`http://localhost:8081/mockups/add?name=${this.state.file.name}&location=${this.state.url}`, { method: "POST" })
+      .then()
   }
 
   render() {
