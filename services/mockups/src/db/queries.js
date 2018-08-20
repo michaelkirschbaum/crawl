@@ -10,7 +10,7 @@ AWS.config.update({
 var s3 = new AWS.S3()
 var bucketName = 'crawlr' + uuid.v4()
 var corsConfig = {
-  AllowedHeaders:["Authorization"],
+  AllowedHeaders:["*"],
   AllowedMethods:["PUT", "POST", "DELETE"],
   AllowedOrigins:["*"],
   ExposeHeaders:[],
