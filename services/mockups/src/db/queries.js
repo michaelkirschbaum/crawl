@@ -39,6 +39,27 @@ s3.createBucket({Bucket: bucketName}, function(err, data) {
   }
 })
 
+// set cors for bucket
+var corsConfig = {
+  AllowedHeaders:["Authorization"],
+  AllowedMethods:["PUT", "POST", "DELETE"],
+  AllowedOrigins:["*"],
+  ExposeHeaders:[],
+  MaxAgeSeconds:3000
+}
+
+var corsParams = {
+  Bucket: bucketName,
+  CORSConfiguration: {CORSRules: new Array(corsConfig)}
+}
+s3.putBucketCors(corsParams, function(err, data) {
+  if (err) {
+    console.log("Error", err);
+  } else {
+    console.log("Success", data);
+  }
+})
+
 function signUrl(req, res, next) {
   const { fileName, fileType } = req.query
 
@@ -62,7 +83,7 @@ function signUrl(req, res, next) {
 
 function addMockup(req, res, next) {
   // save location of file in s3
-  const mockup = new Mockup({ name: req.body.name, uri: uploadLocation })
+  const mockup = new Mockup({ name: req.query.name, uri: req.query.location })
   mockup.save()
     .then(() => res.send('added mockup'))
 }
