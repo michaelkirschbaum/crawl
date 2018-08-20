@@ -61,7 +61,7 @@ function signUrl(req, res, next) {
 
 function addMockup(req, res, next) {
   // save location of file in s3
-  const mockup = new Mockup({ name: req.body.name, uri: uploadLocation })
+  const mockup = new Mockup({ name: req.query.name, uri: req.query.location })
   mockup.save()
     .then(() => res.send('added mockup'))
 }
