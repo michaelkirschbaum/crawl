@@ -8,8 +8,7 @@ class Upload extends Component {
       name: '',
       file: null,
       projects: [],
-      signedUrl: '',
-      url: ''
+      signedUrl: ''
     }
 
     this.onChange = this.onChange.bind(this)
@@ -42,7 +41,6 @@ class Upload extends Component {
       })
       .then(resJson => {
         this.setState({ signedUrl: resJson.signedRequest })
-        this.setState({ url: resJson.url })
       })
       .catch(err => console.log(err))
   }
@@ -63,14 +61,8 @@ class Upload extends Component {
     // upload image to s3
     fetch(this.state.signedUrl, options)
       .then(res => {
-        if (!res.ok)
-          throw new Error(`${response.status}: ${response.statusText}`)
-        else
-          alert("Image uploaded successfully")
+        if (!res.ok) throw new Error(`${response.status}: ${response.statusText}`)
       })
-
-    // save project
-    fetch(`http://localhost:8081/mockups/add?name=${this.state.name}&location=${this.state.url}`, { method: "POST" })
   }
 
   render() {
@@ -78,17 +70,17 @@ class Upload extends Component {
       <div className="Upload">
         <h1>Projects</h1>
 
+        <ul>
+          {this.state.projects.map(project => {
+              return <li key={project._id}>{project.name} {project.uri}</li>
+          })}
+        </ul>
+
         <form onSubmit={this.handleSubmit}>
           Name: <input type="text" name="name" onChange={this.onChange} />
           <input type="file" accept="image/png, image/jpeg" name="mockup" onChange={this.onFileChange} />
           <input type="submit" value="Submit" />
         </form>
-
-        <ul>
-          {this.state.projects.map(project => {
-              return <li key={project.id}>{project.name} {project.uri}</li>
-          })}
-        </ul>
       </div>
     )
   }
