@@ -67,7 +67,7 @@ class Upload extends Component {
         alert("Project created!")
       })
 
-    fetch(`http://localhost:8081/mockups/add?name=${this.state.file.name}&location=${this.state.url}`, { method: "POST" })
+    fetch(`http://localhost:8081/mockups/add?name=${this.state.name}&location=${this.state.url}`, { method: "POST" })
   }
 
   render() {
