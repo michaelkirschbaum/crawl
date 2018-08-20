@@ -75,17 +75,17 @@ class Upload extends Component {
       <div className="Upload">
         <h1>Projects</h1>
 
-        <ul>
-          {this.state.projects.map(project => {
-              return <li key={project._id}>{project.name} {project.uri}</li>
-          })}
-        </ul>
-
         <form onSubmit={this.handleSubmit}>
           Name: <input type="text" name="name" onChange={this.onChange} />
           <input type="file" accept="image/png, image/jpeg" name="mockup" onChange={this.onFileChange} />
           <input type="submit" value="Submit" />
         </form>
+
+        <ul>
+          {this.state.projects.map(project => {
+              return <li key={project._id}>{project.name} {project.uri}</li>
+          })}
+        </ul>
       </div>
     )
   }
