@@ -42,7 +42,7 @@ class Upload extends Component {
                   if (!res.ok) throw new Error(`${res.status}: ${res.statusText}`)
 
                   // store s3 object
-                  // this.setState({ projects: [...this.state.projects, res] })
+                  this.setState({ projects: [...this.state.projects, project.name] })
                 })
             })
             .catch(err => console.log(err))
