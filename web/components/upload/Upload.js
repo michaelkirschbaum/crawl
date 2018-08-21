@@ -37,13 +37,7 @@ class Upload extends Component {
               }
             })
             .then(resJson => {
-              fetch(resJson.signedRequest)
-                .then(res => {
-                  if (!res.ok) throw new Error(`${res.status}: ${res.statusText}`)
-
-                  // store s3 object
-                  this.setState({ projects: [...this.state.projects, project.name] })
-                })
+              this.setState({ projects: [...this.state.projects, {name: project.name, image: resJson.signedRequest}] })
             })
             .catch(err => console.log(err))
         })
@@ -105,11 +99,16 @@ class Upload extends Component {
           <input type="submit" value="Submit" />
         </form>
 
-        {/* <ul>
-          {this.state.projects.map(project => {
-              return <li key={project._id}>{project}</li>
+        <ul>
+          {this.state.projects.map((project, i) => {
+            return (
+              <li key={i}>
+                <h2>{project.name}</h2>
+                <img src={project.image} />
+              </li>
+            )
           })}
-        </ul> */}
+        </ul>
       </div>
     )
   }
