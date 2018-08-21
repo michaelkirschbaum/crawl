@@ -1,7 +1,13 @@
-.Upload {
-
-}
-
 ul {
   list-style-type: none;
+}
+
+li {
+  width: fit-content;
+  display: inline-block;
+}
+
+img {
+  width: 200px;
+  length: 200px;
 }
