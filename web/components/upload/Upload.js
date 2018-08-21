@@ -22,7 +22,31 @@ class Upload extends Component {
     fetch('http://localhost:8081/mockups/get')
       .then(res => res.json())
       .then(resJson => {
-        this.setState({ projects: resJson })
+        resJson.forEach(project => {
+          // parse file name
+          var uri = project.uri.split('/')
+          var fileName = uri[uri.length - 1]
+
+          // request pre-signed url
+          fetch(`http://localhost:8081/mockups/signUrl?method=get&fileName=${fileName}`)
+            .then(res => {
+              if (res.ok) {
+                return res.json()
+              } else {
+                throw new error('request failed')
+              }
+            })
+            .then(resJson => {
+              fetch(resJson.signedRequest)
+                .then(res => {
+                  if (!res.ok) throw new Error(`${res.status}: ${res.statusText}`)
+
+                  // store s3 object
+                  // this.setState({ projects: [...this.state.projects, res] })
+                })
+            })
+            .catch(err => console.log(err))
+        })
       })
       .catch(err => console.log(err))
   }
@@ -32,7 +56,7 @@ class Upload extends Component {
     this.setState({file: event.target.files[0]})
 
     // request pre-signed url
-    fetch(`http://localhost:8081/mockups/signUrl?fileName=${event.target.files[0].name}&fileType=${event.target.files[0].type}`)
+    fetch(`http://localhost:8081/mockups/signUrl?method=put&fileName=${event.target.files[0].name}&fileType=${event.target.files[0].type}`)
       .then(res => {
         if (res.ok) {
           return res.json()
@@ -83,7 +107,7 @@ class Upload extends Component {
 
         <ul>
           {this.state.projects.map(project => {
-              return <li key={project._id}>{project.name} {project.uri}</li>
+              return <li key={project._id}>{project}</li>
           })}
         </ul>
       </div>
