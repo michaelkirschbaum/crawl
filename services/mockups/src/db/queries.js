@@ -40,15 +40,18 @@ s3.createBucket({Bucket: bucketName}, function(err, data) {
 })
 
 function signUrl(req, res, next) {
-  const { fileName, fileType } = req.query
+  const { method, fileName, fileType } = req.query
 
   var s3Params = {
     Bucket: bucketName,
     Key: fileName,
-    ContentType: fileType
   }
 
-  s3.getSignedUrl('putObject', s3Params, (err, data) => {
+  // if request method is 'put', assign content type
+  if (fileType)
+    s3Params.ContentType = fileType
+
+  s3.getSignedUrl(method + 'Object', s3Params, (err, data) => {
     if (err) {
       console.error(err)
     } else {
