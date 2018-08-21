@@ -105,11 +105,11 @@ class Upload extends Component {
           <input type="submit" value="Submit" />
         </form>
 
-        <ul>
+        {/* <ul>
           {this.state.projects.map(project => {
               return <li key={project._id}>{project}</li>
           })}
-        </ul>
+        </ul> */}
       </div>
     )
   }
