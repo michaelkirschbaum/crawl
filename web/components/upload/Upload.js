@@ -1,6 +1,15 @@
 import React, { Component } from 'react'
 import "./Upload.css"
 
+function Project(props) {
+  return (
+    <div>
+      <h2>{props.name}</h2>
+      <img src={props.image} />
+    </div>
+  )
+}
+
 class Upload extends Component {
   constructor(props) {
     super(props)
@@ -111,8 +120,10 @@ class Upload extends Component {
           {this.state.projects.map((project, i) => {
             return (
               <li key={i}>
-                <h2>{project.name}</h2>
-                <img src={project.image} />
+                <Project
+                  name={project.name}
+                  image={project.image}>
+                </Project>
               </li>
             )
           })}
