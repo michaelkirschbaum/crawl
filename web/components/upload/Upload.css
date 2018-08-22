@@ -1,10 +1,12 @@
 ul {
   list-style-type: none;
+  display: flex;
 }
 
 li {
   width: fit-content;
   display: inline-block;
+  margin-right: 20px;
 }
 
 img {
