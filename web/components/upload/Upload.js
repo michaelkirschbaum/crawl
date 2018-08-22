@@ -112,12 +112,14 @@ class Upload extends Component {
   }
 
   render() {
+    const { projects } = this.state
+
     return (
       <div className="Upload">
         <h1>Projects</h1>
 
         <ul>
-          {this.state.projects.map((project, i) => {
+          {projects.map((project, i) => {
             return (
               <li key={i}>
                 <Project
