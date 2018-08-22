@@ -70,22 +70,36 @@ class Upload extends Component {
   }
 
   handleSubmit(event) {
-    event.preventDefault()
+    // save project
+    fetch(`http://localhost:8081/mockups/add?name=${this.state.name}&location=${this.state.url}`, { method: "POST" })
 
+    // upload image to s3
     var options = {
       method: "PUT",
       body: this.state.file,
       headers: { 'Content-Type': this.state.file.type }
     }
 
-    // upload image to s3
     fetch(this.state.signedUrl, options)
       .then(res => {
         if (!res.ok) throw new Error(`${response.status}: ${response.statusText}`)
-        alert("Project created!")
+
+        // append to projects
+        fetch(`http://localhost:8081/mockups/signUrl?method=get&fileName=${this.state.file.name}`)
+          .then(res => {
+            if (res.ok) {
+              return res.json()
+            } else {
+              throw new error('request failed')
+            }
+          })
+          .then(resJson => {
+            this.setState({ projects: [...this.state.projects, {name: this.state.name, image: resJson.signedRequest}] })
+          })
+          .catch(err => console.log(err))
       })
 
-    fetch(`http://localhost:8081/mockups/add?name=${this.state.name}&location=${this.state.url}`, { method: "POST" })
+      event.preventDefault()
   }
 
   render() {
