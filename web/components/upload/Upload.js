@@ -11,7 +11,6 @@ class Upload extends Component {
       signedUrl: '',
       url: ''
     }
-
     this.onChange = this.onChange.bind(this)
     this.onFileChange = this.onFileChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -70,19 +69,23 @@ class Upload extends Component {
   }
 
   handleSubmit(event) {
+    event.preventDefault()
+
     // save project
     fetch(`http://localhost:8081/mockups/add?name=${this.state.name}&location=${this.state.url}`, { method: "POST" })
+      .then(res => console.log(res))
+      .catch(err => console.log(err))
 
-    // upload image to s3
     var options = {
       method: "PUT",
       body: this.state.file,
       headers: { 'Content-Type': this.state.file.type }
     }
 
+    // upload image to s3
     fetch(this.state.signedUrl, options)
       .then(res => {
-        if (!res.ok) throw new Error(`${response.status}: ${response.statusText}`)
+        if (!res.ok) throw new error(`${response.status}: ${response.statusText}`)
 
         // append to projects
         fetch(`http://localhost:8081/mockups/signUrl?method=get&fileName=${this.state.file.name}`)
@@ -98,8 +101,7 @@ class Upload extends Component {
           })
           .catch(err => console.log(err))
       })
-
-      event.preventDefault()
+      .catch(err => console.log(err))
   }
 
   render() {
@@ -108,23 +110,14 @@ class Upload extends Component {
     return (
       <div className="Upload">
         <h1>Projects</h1>
-
         <ul>
           {projects.map((project, i) => {
-            return (
-              <li key={i}>
-                <Project
-                  name={project.name}
-                  image={project.image}>
-                </Project>
-              </li>
-            )
+            return <li key={i}><Project name={project.name} image={project.image}></Project></li>
           })}
         </ul>
-
         <form onSubmit={this.handleSubmit}>
           Name: <input type="text" name="name" onChange={this.onChange} />
-          <input type="file" accept="image/png, image/jpeg" name="mockup" onChange={this.onFileChange} />
+          <input type="file" accept="image/jpeg" name="mockup" onChange={this.onFileChange} />
           <input type="submit" value="Submit" />
         </form>
       </div>
