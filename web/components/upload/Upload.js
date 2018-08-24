@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import "./Upload.css"
+import './Upload.css'
 
 class Upload extends Component {
   constructor(props) {
@@ -9,7 +9,9 @@ class Upload extends Component {
       file: null,
       projects: [],
       signedUrl: '',
-      url: ''
+      url: '',
+      isLoading: false,
+      errorStatus: null
     }
     this.onChange = this.onChange.bind(this)
     this.onFileChange = this.onFileChange.bind(this)
@@ -38,10 +40,14 @@ class Upload extends Component {
             .then(resJson => {
               this.setState({ projects: [...this.state.projects, {name: project.name, image: resJson.signedRequest}] })
             })
-            .catch(err => console.log(err))
+            .catch(err => console.error(err))
         })
       })
-      .catch(err => console.log(err))
+      .catch(err => console.error(err))
+  }
+
+  onChange(event) {
+    this.setState({name: event.target.value})
   }
 
   onFileChange(event) {
@@ -61,11 +67,7 @@ class Upload extends Component {
         this.setState({ signedUrl: resJson.signedRequest })
         this.setState({ url: resJson.url })
       })
-      .catch(err => console.log(err))
-  }
-
-  onChange(event) {
-    this.setState({name: event.target.value})
+      .catch(err => console.error(err))
   }
 
   handleSubmit(event) {
@@ -74,15 +76,14 @@ class Upload extends Component {
     // save project
     fetch(`http://localhost:8081/mockups/add?name=${this.state.name}&location=${this.state.url}`, { method: "POST" })
       .then(res => console.log(res))
-      .catch(err => console.log(err))
+      .catch(err => console.error(err))
 
+    // upload image to s3
     var options = {
       method: "PUT",
       body: this.state.file,
       headers: { 'Content-Type': this.state.file.type }
     }
-
-    // upload image to s3
     fetch(this.state.signedUrl, options)
       .then(res => {
         if (!res.ok) throw new error(`${response.status}: ${response.statusText}`)
@@ -90,18 +91,15 @@ class Upload extends Component {
         // append to projects
         fetch(`http://localhost:8081/mockups/signUrl?method=get&fileName=${this.state.file.name}`)
           .then(res => {
-            if (res.ok) {
-              return res.json()
-            } else {
-              throw new error('request failed')
-            }
+            if (!res.ok) throw new error('failed to get signed url')
+            return res.json()
           })
           .then(resJson => {
             this.setState({ projects: [...this.state.projects, {name: this.state.name, image: resJson.signedRequest}] })
           })
-          .catch(err => console.log(err))
+          .catch(err => console.error(err))
       })
-      .catch(err => console.log(err))
+      .catch(err => console.error(err))
   }
 
   render() {
@@ -133,5 +131,7 @@ function Project(props) {
     </div>
   )
 }
+
+Upload.propTypes = {}
 
 export default Upload
