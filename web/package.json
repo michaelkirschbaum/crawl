@@ -8,7 +8,8 @@
   "scripts": {
     "start": "webpack-dev-server --mode development --hot --host 0.0.0.0",
     "build": "webpack --mode development",
-    "test": "jest"
+    "test": "jest",
+    "test:watch": "yarn test --watch"
   },
   "dependencies": {
     "aws-sdk": "^2.267.1",
@@ -17,6 +18,7 @@
     "react-dom": "^16.4.1",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",
+    "redux-thunk": "^2.3.0",
     "uuid": "^3.3.2"
   },
   "devDependencies": {

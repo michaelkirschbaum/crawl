@@ -1,5 +1,11 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import './Upload.css'
+import Project from '../project/Project'
+
+const mapStateToProps = null
+
+const mapDispatchToProps = null
 
 class Upload extends Component {
   constructor(props) {
@@ -123,13 +129,7 @@ class Upload extends Component {
   }
 }
 
-const Project = ({ name, image }) => (
-  <div>
-    <h2>{name}</h2>
-    <img src={image} />
-  </div>
-)
-
 Upload.propTypes = {}
 
+// export default connect(mapStateToProps, mapDispatchToProps)(Upload)
 export default Upload
