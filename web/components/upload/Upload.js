@@ -123,14 +123,12 @@ class Upload extends Component {
   }
 }
 
-function Project(props) {
-  return (
-    <div>
-      <h2>{props.name}</h2>
-      <img src={props.image} />
-    </div>
-  )
-}
+const Project = ({ name, image }) => (
+  <div>
+    <h2>{name}</h2>
+    <img src={image} />
+  </div>
+)
 
 Upload.propTypes = {}
 
