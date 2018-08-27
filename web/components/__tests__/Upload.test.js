@@ -8,6 +8,8 @@ import Adapter from 'enzyme-adapter-react-16'
 Enzyme.configure({ adapter: new Adapter() })
 
 describe('Upload', () => {
+  fetchMock.get('*', JSON.stringify({response: ''}))
+
   it('should render correctly', () => {
     const component = shallow(
       <Upload />
@@ -16,8 +18,6 @@ describe('Upload', () => {
   })
 
   it('should fetch projects', () => {
-    fetchMock.get('*', JSON.stringify({response: ''}))
-
     return getImage('test.jpeg').then
   })
 })
