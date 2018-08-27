@@ -23,6 +23,7 @@ class Upload extends Component {
     this.onChange = this.onChange.bind(this)
     this.onFileChange = this.onFileChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.getImage = this.getImage.bind(this)
   }
 
   componentDidMount() {
@@ -35,7 +36,7 @@ class Upload extends Component {
           var uri = project.uri.split('/')
           var fileName = uri[uri.length - 1]
 
-          getImage(fileName).then(url => {
+          this.getImage(fileName).then(url => {
             this.setState({
               projects: [...this.state.projects, {name: project.name, image: url}]
             })
