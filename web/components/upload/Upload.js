@@ -112,7 +112,7 @@ class Upload extends Component {
         }
       })
       .then(resJson => {
-        return resJson
+        return resJson.signedRequest
       })
       .catch(err => {
         this.setState({ isLoading: false, errorStatus: err })
