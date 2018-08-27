@@ -15,29 +15,37 @@ describe('Upload', () => {
     expect(component).toMatchSnapshot()
   })
 
-  it('', () => {
+  it('should lookup projects', () => {
 
   })
 
-  it('', () => {
+  it('should show error when project lookup fails', () => {
 
   })
 
-  it('', () => {
+  it('should show spinner when loading project', () => {
 
   })
 
-  describe('submit', () => {
-    it('', () => {
+  it('set error when loading project fails', () => {
+
+  })
+
+  describe('submit is clicked', () => {
+    it('should save project', () => {
 
     })
 
-    it('', () => {
+    it('should set error when unable to save project', () => {
 
     })
 
-    it('', () => {
+    it('should upload image', () => {
 
+    })
+
+    it('should set project in state', () => {
+      
     })
   })
 })
