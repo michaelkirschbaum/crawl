@@ -17,6 +17,7 @@
     "mocha": "^5.2.0",
     "mongoose": "^5.1.7",
     "pg-promise": "^8.4.4",
+    "swagger": "^0.7.5",
     "tfjs": "^0.6.0"
   },
   "devDependencies": {
