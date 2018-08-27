@@ -15,7 +15,29 @@ describe('Upload', () => {
     expect(component).toMatchSnapshot()
   })
 
-  it('should fetch projects', () => {
-    // return getImage('test.jpeg').then
+  it('', () => {
+
+  })
+
+  it('', () => {
+
+  })
+
+  it('', () => {
+
+  })
+
+  describe('submit', () => {
+    it('', () => {
+
+    })
+
+    it('', () => {
+
+    })
+
+    it('', () => {
+
+    })
   })
 })
