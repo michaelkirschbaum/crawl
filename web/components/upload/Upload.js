@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import './Upload.css'
 import Project from '../project/Project'
+import PropTypes from 'prop-types'
+import './Upload.css'
 
 const mapStateToProps = null
 
@@ -34,19 +35,11 @@ class Upload extends Component {
           var uri = project.uri.split('/')
           var fileName = uri[uri.length - 1]
 
-          // request pre-signed url
-          fetch(`http://localhost:8081/mockups/signUrl?method=get&fileName=${fileName}`)
-            .then(res => {
-              if (res.ok) {
-                return res.json()
-              } else {
-                throw new error('request failed')
-              }
+          getImage(fileName).then(url => {
+            this.setState({
+              projects: [...this.state.projects, {name: project.name, image: url}]
             })
-            .then(resJson => {
-              this.setState({ projects: [...this.state.projects, {name: project.name, image: resJson.signedRequest}] })
-            })
-            .catch(err => console.error(err))
+          })
         })
       })
       .catch(err => console.error(err))
@@ -108,28 +101,53 @@ class Upload extends Component {
       .catch(err => console.error(err))
   }
 
+  getImage(fileName) {
+    fetch(`http://localhost:8081/mockups/signUrl?method=get&fileName=${fileName}`)
+      .then(res => {
+        if (res.ok) {
+          return res.json()
+        } else {
+          throw new error('failed to get resource from s3')
+        }
+      })
+      .then(resJson => {
+        return resJson
+      })
+      .catch(err => {
+        this.setState({ isLoading: false, errorStatus: err })
+      })
+  }
+
   render() {
-    const { projects } = this.state
+    const { projects, isLoading, errorStatus } = this.state
 
     return (
       <div className="Upload">
+        {isLoading}
+
         <h1>Projects</h1>
+
         <ul>
           {projects.map((project, i) => {
             return <li key={i}><Project name={project.name} image={project.image}></Project></li>
           })}
         </ul>
+
         <form onSubmit={this.handleSubmit}>
           Name: <input type="text" name="name" onChange={this.onChange} />
           <input type="file" accept="image/jpeg" name="mockup" onChange={this.onFileChange} />
           <input type="submit" value="Submit" />
         </form>
+
+        {errorStatus}
       </div>
     )
   }
 }
 
-Upload.propTypes = {}
+Upload.propTypes = {
+  // isLoading: PropTypes.bool.isRequired
+}
 
 // export default connect(mapStateToProps, mapDispatchToProps)(Upload)
 export default Upload
