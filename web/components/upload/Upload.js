@@ -103,7 +103,7 @@ class Upload extends Component {
   }
 
   getImage(fileName) {
-    fetch(`http://localhost:8081/mockups/signUrl?method=get&fileName=${fileName}`)
+    return fetch(`http://localhost:8081/mockups/signUrl?method=get&fileName=${fileName}`)
       .then(res => {
         if (res.ok) {
           return res.json()
