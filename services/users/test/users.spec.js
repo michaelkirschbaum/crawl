@@ -5,7 +5,11 @@ var express = require('express')
 const app = require('express')
 
 describe('user routes', () => {
-  it('', () => {
+  it('addUser', () => {
+    request(app)
+  })
 
+  it('getUser', () => {
+    request(app)
   })
 })
