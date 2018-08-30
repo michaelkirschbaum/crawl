@@ -1,1 +1,1 @@
-var queries = require('../tests/queries.test')
+var queries = require('../db/querie')
