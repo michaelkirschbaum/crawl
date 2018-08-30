@@ -3,7 +3,7 @@ var router = express.Router()
 var db = require('../db/connection')
 
 router.get('/add', function(req, res) {
-  db.one('INSERT INTO users(firstname) VALUES($1) RETURNING id', ['Michael'])
+  db.one('INSERT INTO users(firstname) VALUES($1)', ['test'])
     .then(data => {
       console.log(data)
     })
