@@ -16,7 +16,7 @@ class Account extends Component {
       <div className="Account">
         <h1>Settings</h1>
 
-        User: <text>{name}</text>
+        {name}
       </div>
     );
   }
