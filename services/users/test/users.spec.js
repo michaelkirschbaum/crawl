@@ -4,7 +4,7 @@ var express = require('express')
 
 const app = require('express')
 
-desribe('user routes', () => {
+describe('user routes', () => {
   it('', () => {
 
   })
