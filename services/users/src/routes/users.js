@@ -1,19 +1,9 @@
 var express = require('express')
 var router = express.Router()
-var db = require('../db/connection')
+var db = require('../db/queries')
 
-router.get('/add', function(req, res) {
-  db.none('INSERT INTO users(firstname) VALUES($1)', ['test'])
-    .then(() => {
-      res.send('user added')
-    })
-    .catch(error => {
-      console.log('ERROR:', error)
-    })
-})
+router.get('/add', db.addUser)
 
-router.get('/get', function(req, res) {
-  res.send('user')
-})
+router.get('/get', db.getUser)
 
 module.exports = router
