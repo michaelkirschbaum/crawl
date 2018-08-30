@@ -10,9 +10,13 @@ class Account extends Component {
   }
 
   render() {
+    var { name } = this.state
+
     return (
       <div className="Account">
         <h1>Settings</h1>
+
+        User: <text>{name}</text>
       </div>
     );
   }
