@@ -1,7 +1,7 @@
 var db = require('./connection')
 
 function addUser(req, res, next) {
-  db.none('INSERT INTO users(firstname) VALUES($1)', ['test'])
+  db.none('INSERT INTO users(firstname) VALUES($1)', [req.query.name])
     .then(() => {
       res.send('user added')
     })
@@ -11,7 +11,13 @@ function addUser(req, res, next) {
 }
 
 function getUser(req, res, next) {
-  res.send('user')
+  db.any('SELECT * FROM users')
+    .then(data => {
+      res.send(data)
+    })
+    .catch(error => {
+      console.log('ERROR', error)
+    })
 }
 
 module.exports = {
