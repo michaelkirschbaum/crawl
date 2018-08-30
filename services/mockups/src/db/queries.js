@@ -6,7 +6,7 @@ function signUrl(req, res, next) {
 
   var s3Params = {
     Bucket: AWS.bucket,
-    Key: fileName,
+    Key: fileName
   }
 
   // if request method is 'put', assign content type
