@@ -1,4 +1,4 @@
-const pg = require('pg-promise')
+const pg = require('pg-promise')()
 
 const connection = {
   host: 'localhost',
