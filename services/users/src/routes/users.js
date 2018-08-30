@@ -5,7 +5,7 @@ var db = require('../db/connection')
 router.get('/add', function(req, res) {
   db.one('INSERT INTO users(firstname) VALUES($1)', ['test'])
     .then(data => {
-      console.log(data)
+      res.send(data)
     })
     .catch(error => {
       console.log('ERROR:', error)
