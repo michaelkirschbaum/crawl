@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Project from '../project/Project'
 import PropTypes from 'prop-types'
+import { FadeLoader } from 'react-spinners'
 import './Upload.css'
 
 const mapStateToProps = null
