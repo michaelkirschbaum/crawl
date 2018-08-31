@@ -4,6 +4,7 @@ import Upload from '../../components/upload/Upload'
 import fetchMock from 'fetch-mock'
 import Enzyme from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
+import { spy } from 'sinon'
 
 Enzyme.configure({ adapter: new Adapter() })
 

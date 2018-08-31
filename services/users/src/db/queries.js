@@ -1,7 +1,7 @@
 var db = require('./connection')
 
 function addUser(req, res, next) {
-  db.none('INSERT INTO users(firstname) VALUES($1)', [req.query.name])
+  db.none('INSERT INTO users(first, last) VALUES($1, $2)', [req.query.first, req.query.last])
     .then(() => {
       res.send('user added')
     })

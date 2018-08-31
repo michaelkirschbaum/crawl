@@ -4,5 +4,6 @@ CREATE DATABASE users_test;
 \c users_dev;
 
 CREATE TABLE users (
-  firstName VARCHAR
+  first VARCHAR,
+  last VARCHAR
 );
