@@ -7,7 +7,6 @@ class Menu extends Component {
     return (
       <div className="Menu">
         <Link to="/">Dashboard</Link>
-        <Link to="/login">Login</Link>
         <Link to="/account">Account</Link>
       </div>
     )

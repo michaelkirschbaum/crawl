@@ -4,7 +4,12 @@ import Dashboard from "../dashboard/Dashboard.js"
 import Account from "../account/Account.js"
 import Login from "../login/Login"
 import Menu from "../menu/Menu"
-import { Link, BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import {
+  Link,
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from 'react-router-dom'
 import "./App.css"
 
 class App extends Component {

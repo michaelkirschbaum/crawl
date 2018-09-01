@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Redirect } from 'react-router-dom'
 import './Login.css'
 
 class Login extends Component {
@@ -7,10 +8,12 @@ class Login extends Component {
 
     this.state = {
       first: '',
-      last: ''
+      last: '',
+      redirect: false
     }
     this.onChange = this.onChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.authenticate = this.authenticate.bind(this)
   }
 
   onChange(event) {
@@ -18,13 +21,34 @@ class Login extends Component {
   }
 
   handleSubmit() {
-    // verify credentials
-    fetch(`http://localhost:8080/users/add?first=${this.state.first}&last=${this.state.last}`)
-      .then(res => console.log(res))
-      .catch(err => console.error(err))
+    const { first, last } = this.state
+
+    this.authenticate(first, last)
+      .then(() => this.setState({ redirect: true }))
+      .catch(err => console.log(err))
+  }
+
+  authenticate(first, last) {
+    return new Promise (
+      function (resolve, reject) {
+        if (first && last)
+          resolve(first)
+        else
+          reject(new Error('authentication failed'))
+      }
+    )
+    /*
+    return fetch(`http://localhost:8080/users/add?first=${first}&last=${last}`)
+      .catch(err => console.error(err)) */
   }
 
   render() {
+    var { first, last, redirect } = this.state
+    const from = { pathname: '/' }
+
+    if (redirect)
+      return <Redirect to={from}/>
+
     return (
       <div className="Login">
         <h1>Login</h1>
