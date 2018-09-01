@@ -32,6 +32,8 @@ class Upload extends Component {
     fetch('http://localhost:8081/mockups/get')
       .then(res => res.json())
       .then(resJson => {
+        this.setState({ isLoading: true })
+
         resJson.forEach(project => {
           // parse file name
           var uri = project.uri.split('/')
@@ -43,6 +45,8 @@ class Upload extends Component {
             })
           })
         })
+
+        this.setState({ isLoading: false })
       })
       .catch(err => console.error(err))
   }
@@ -125,23 +129,18 @@ class Upload extends Component {
 
     return (
       <div className="Upload">
-        {isLoading}
-
         <h1>Projects</h1>
-
+        <FadeLoader loading={this.state.isLoading}/>
         <ul>
           {projects.map((project, i) => {
             return <li key={i}><Project name={project.name} image={project.image}></Project></li>
           })}
         </ul>
-
         <form onSubmit={this.handleSubmit}>
           Name: <input type="text" name="name" onChange={this.onChange} />
           <input type="file" accept="image/jpeg" name="mockup" onChange={this.onFileChange} />
           <input type="submit" value="Submit" />
         </form>
-
-        {errorStatus}
       </div>
     )
   }
