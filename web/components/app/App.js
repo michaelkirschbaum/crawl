@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { hot } from 'react-hot-loader'
+import { connect } from 'react-redux'
+import { setAuthentication } from './appActions'
 import Dashboard from "../dashboard/Dashboard.js"
 import Account from "../account/Account.js"
 import Login from "../login/Login"
@@ -8,9 +10,28 @@ import {
   Link,
   BrowserRouter as Router,
   Switch,
-  Route
+  Route,
+  withRouter
 } from 'react-router-dom'
 import "./App.css"
+
+const mapStateToProps = state => ({
+  isAuthenticated: state.isAuthenticated
+})
+
+const mapDispatchToProps = dispatch => {
+  return {
+    setAuthentication: status => {
+      dispatch(setAuthentication(status))
+    }
+  }
+}
+
+const ProtectedRoute = () => (
+  <Route
+    render={<Component />}
+  />
+)
 
 class App extends Component {
   render() {
@@ -27,4 +48,4 @@ class App extends Component {
   }
 }
 
-export default hot(module)(App)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(hot(module)(App)))
