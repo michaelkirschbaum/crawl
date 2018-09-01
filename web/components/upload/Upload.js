@@ -146,5 +146,4 @@ Upload.propTypes = {
   // isLoading: PropTypes.bool.isRequired
 }
 
-// export default connect(mapStateToProps, mapDispatchToProps)(Upload)
-export default Upload
+export default connect(mapStateToProps, mapDispatchToProps)(Upload)

@@ -37,9 +37,6 @@ class Login extends Component {
           reject(new Error('authentication failed'))
       }
     )
-    /*
-    return fetch(`http://localhost:8080/users/add?first=${first}&last=${last}`)
-      .catch(err => console.error(err)) */
   }
 
   render() {

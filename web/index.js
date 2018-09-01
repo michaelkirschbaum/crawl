@@ -4,11 +4,10 @@ import App from "./components/app/App.js"
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import { BrowserRouter as Router } from 'react-router-dom'
+import rootReducer from './reducers'
 
 const store = createStore(
-  function app(state = [], action) {
-    return state
-  },
+  rootReducer,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 )
 
