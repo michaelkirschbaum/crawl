@@ -1,11 +1,7 @@
 import React from 'react'
-import { shallow } from 'enzyme'
 import Upload from '../../components/upload/Upload'
 import fetchMock from 'fetch-mock'
-import Enzyme from 'enzyme'
-import Adapter from 'enzyme-adapter-react-16'
-
-Enzyme.configure({ adapter: new Adapter() })
+import { shallow } from 'enzyme'
 
 describe('Upload', () => {
   fetchMock.get('*', JSON.stringify({res: ''}))
