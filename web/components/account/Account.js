@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import "./Account.css"
 
 class Account extends Component {
@@ -25,8 +26,12 @@ class Account extends Component {
     return (
       <div className="Account">
         <h1>Settings</h1>
-
-        User: {first} {last}
+        <label>
+          Hi {first} {last}!
+        </label>
+        <div>
+          <Link to="log out">Logout</Link>
+        </div>
       </div>
     );
   }
