@@ -23,11 +23,9 @@ describe('mockup routes', () => {
 
   it('addMockup', () => {
     request(app)
-    // .put('/addMockup')
   })
 
   it('getMockup', () => {
     request(app)
-    // .get('/getMockup')
   })
 })
