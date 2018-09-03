@@ -1,6 +1,16 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { setAuthentication } from '../app/appActions'
 import "./Account.css"
+
+const mapDispatchToProps = dispatch => {
+  return {
+    setAuthentication: status => {
+      dispatch(setAuthentication(status))
+    }
+  }
+}
 
 class Account extends Component {
   constructor(props) {
@@ -9,6 +19,7 @@ class Account extends Component {
       first: '',
       last: ''
     }
+    this.logout = this.logout.bind(this)
   }
 
   componentDidMount() {
@@ -18,6 +29,10 @@ class Account extends Component {
         this.setState({ first: resJson[0].first })
         this.setState({ last: resJson[0].last })
       })
+  }
+
+  logout() {
+    this.props.setAuthentication(false)
   }
 
   render() {
@@ -30,11 +45,11 @@ class Account extends Component {
           Hi {first} {last}!
         </label>
         <div>
-          <Link to="log out">Logout</Link>
+          <button onClick={this.logout}>Log out</button>
         </div>
       </div>
     );
   }
 }
 
-export default Account
+export default connect(null, mapDispatchToProps)(Account)
