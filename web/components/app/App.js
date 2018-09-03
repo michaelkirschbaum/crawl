@@ -15,18 +15,15 @@ import {
 } from 'react-router-dom'
 import './App.css'
 
-const mapStateToProps = state => ({
-  isAuthenticated: state.isAuthenticated
-})
+const mapStateToProps = state => {
+  return {
+    isAuthenticated: state.appReducer.isAuthenticated
+  }
+}
 
-const ProtectedRoute = ({ component: Component }) => (
-  <Route
-    render={props =>
-      false ? (
-        <Component />
-      ) : (
-        <Redirect to={{ pathname: '/login' }}/>
-      )}
+const ProtectedRoute = ({ component: Component, path, auth }) => (
+  <Route {...path}
+    render={props => auth ? <Component /> : <Redirect to={{ pathname: '/login' }}/>}
   />
 )
 
