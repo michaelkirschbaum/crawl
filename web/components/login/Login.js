@@ -1,11 +1,20 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { setAuthentication } from '../app/appActions'
 import './Login.css'
+
+const mapDispatchToProps = dispatch => {
+  return {
+    setAuthentication: status => {
+      dispatch(setAuthentication(status))
+    }
+  }
+}
 
 class Login extends Component {
   constructor(props) {
     super(props)
-
     this.state = {
       first: '',
       last: '',
@@ -59,4 +68,4 @@ class Login extends Component {
   }
 }
 
-export default Login
+export default connect(null, mapDispatchToProps)(Login)
