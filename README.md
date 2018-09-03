@@ -4,7 +4,7 @@ Design tool that generates user interfaces given wireframes and illustrations us
 
 ## Configure
 
-Set AWS credentials in ~/.aws/credentials
+Set AWS credentials in .env
 
 ## Build
 
