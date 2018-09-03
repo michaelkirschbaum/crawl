@@ -45,7 +45,7 @@ class Account extends Component {
           Hi {first} {last}!
         </label>
         <div>
-          <button onClick={this.logout}>Log out</button>
+          <button onClick={this.logout}>Logout</button>
         </div>
       </div>
     );
