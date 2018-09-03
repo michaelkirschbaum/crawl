@@ -24,7 +24,15 @@ const mapStateToProps = state => {
 const ProtectedRoute = ({ component: Component, path, auth }) => (
   <Route
     {...path}
-    render={props => auth ? <Component /> : <Redirect to={{ pathname: '/login' }}/>}
+    render={props => auth ?
+      <Component /> :
+      <Redirect
+        to={{
+          pathname: '/login',
+          state: { from: props.location }
+        }}
+      />
+    }
   />
 )
 
