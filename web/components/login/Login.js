@@ -52,7 +52,7 @@ class Login extends Component {
 
   render() {
     var { first, last, redirect } = this.state
-    const from = { pathname: '/' }
+    var { from } = this.props.location.state || { from: { pathname: '/' } }
 
     if (redirect)
       return <Redirect to={from}/>
