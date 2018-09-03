@@ -1,5 +1,4 @@
 version: '2'
-
 services:
   users-service:
     container_name: users-service
@@ -13,7 +12,6 @@ services:
       - DATABASE_URL=postgres://admin:admin@users-db:5433/users_dev
       - DATABASE_TEST_URL=postgres://admin:admin@users-db:5433/users_test
       - NODE_ENV=development
-      - TOKEN_SECRET=changeme
     depends_on:
       - users-db
     links:
@@ -26,11 +24,13 @@ services:
       - './services/mockups/package.json:/usr/src/package.json'
     ports:
       - '8081:8080'
+    env_file: .env
     environment:
       - DATABASE_URL=postgres://admin:admin@mockups-db:5432/users_dev
       - DATABASE_TEST_URL=postgres://admin:admin@mockups-db:5432/users_test
       - NODE_ENV=development
-      - TOKEN_SECRET=changeme
+      - AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
+      - AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
     depends_on:
       - mockups-db
     links:
@@ -64,4 +64,3 @@ services:
     links:
       - users-service
       - mockups-service
-  # test:
