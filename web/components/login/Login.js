@@ -18,7 +18,7 @@ class Login extends Component {
     this.state = {
       email: '',
       password: '',
-      redirect: false
+      redirectToReferrer: false
     }
     this.onChange = this.onChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -39,7 +39,7 @@ class Login extends Component {
 
   authenticate(email, password) {
     this.props.setAuthentication(true)
-    this.setState({ redirect: true })
+    this.setState({ redirectToReferrer: true })
     /* return new Promise (
       function (resolve, reject) {
         if (email && password)
@@ -51,10 +51,10 @@ class Login extends Component {
   }
 
   render() {
-    var { first, last, redirect } = this.state
+    var { first, last, redirectToReferrer } = this.state
     var { from } = this.props.location.state || { from: { pathname: '/' } }
 
-    if (redirect)
+    if (redirectToReferrer)
       return <Redirect to={from}/>
 
     return (
