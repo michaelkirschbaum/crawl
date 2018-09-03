@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import { hot } from 'react-hot-loader'
 import { connect } from 'react-redux'
-import Dashboard from '../dashboard/Dashboard.js'
-import Account from '../account/Account.js'
+import Dashboard from '../dashboard/Dashboard'
+import Account from '../account/Account'
 import Login from '../login/Login'
 import Menu from '../menu/Menu'
+import Register from '../register/Register'
 import {
   Link,
   BrowserRouter as Router,
@@ -42,9 +43,10 @@ class App extends Component {
       <div>
         <Menu />
         <Switch>
-          <ProtectedRoute exact path='/' auth={this.props.isAuthenticated} component={Dashboard}/>
-          <Route path='/account' component={Account}/>
           <Route path='/login' component={Login}/>
+          <Route path='/register' component={Register}/>
+          <ProtectedRoute exact path='/' auth={this.props.isAuthenticated} component={Dashboard}/>
+          <ProtectedRoute path='/account' auth={this.props.isAuthenticated} component={Account}/>
         </Switch>
       </div>
     )
