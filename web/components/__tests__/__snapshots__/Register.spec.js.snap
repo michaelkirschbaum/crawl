@@ -1,0 +1,464 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Register should render correctly 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Register />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <h1>
+          Register
+        </h1>,
+        <form
+          onSubmit={[Function]}
+        >
+          <input
+            name="first"
+            onChange={[Function]}
+            placeholder="First name"
+            type="text"
+          />
+          <br />
+          <input
+            name="last"
+            onChange={[Function]}
+            placeholder="Last name"
+            type="text"
+          />
+          <br />
+          <input
+            name="email"
+            onChange={[Function]}
+            placeholder="Email"
+            type="text"
+          />
+          <br />
+          <input
+            name="password"
+            onChange={[Function]}
+            placeholder="Password"
+            type="text"
+          />
+          <br />
+          <input
+            type="submit"
+            value="Register"
+          />
+        </form>,
+      ],
+      "className": "Register",
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": "Register",
+        },
+        "ref": null,
+        "rendered": "Register",
+        "type": "h1",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <input
+              name="first"
+              onChange={[Function]}
+              placeholder="First name"
+              type="text"
+            />,
+            <br />,
+            <input
+              name="last"
+              onChange={[Function]}
+              placeholder="Last name"
+              type="text"
+            />,
+            <br />,
+            <input
+              name="email"
+              onChange={[Function]}
+              placeholder="Email"
+              type="text"
+            />,
+            <br />,
+            <input
+              name="password"
+              onChange={[Function]}
+              placeholder="Password"
+              type="text"
+            />,
+            <br />,
+            <input
+              type="submit"
+              value="Register"
+            />,
+          ],
+          "onSubmit": [Function],
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "name": "first",
+              "onChange": [Function],
+              "placeholder": "First name",
+              "type": "text",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": "input",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {},
+            "ref": null,
+            "rendered": null,
+            "type": "br",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "name": "last",
+              "onChange": [Function],
+              "placeholder": "Last name",
+              "type": "text",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": "input",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {},
+            "ref": null,
+            "rendered": null,
+            "type": "br",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "name": "email",
+              "onChange": [Function],
+              "placeholder": "Email",
+              "type": "text",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": "input",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {},
+            "ref": null,
+            "rendered": null,
+            "type": "br",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "name": "password",
+              "onChange": [Function],
+              "placeholder": "Password",
+              "type": "text",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": "input",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {},
+            "ref": null,
+            "rendered": null,
+            "type": "br",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "type": "submit",
+              "value": "Register",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": "input",
+          },
+        ],
+        "type": "form",
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <h1>
+            Register
+          </h1>,
+          <form
+            onSubmit={[Function]}
+          >
+            <input
+              name="first"
+              onChange={[Function]}
+              placeholder="First name"
+              type="text"
+            />
+            <br />
+            <input
+              name="last"
+              onChange={[Function]}
+              placeholder="Last name"
+              type="text"
+            />
+            <br />
+            <input
+              name="email"
+              onChange={[Function]}
+              placeholder="Email"
+              type="text"
+            />
+            <br />
+            <input
+              name="password"
+              onChange={[Function]}
+              placeholder="Password"
+              type="text"
+            />
+            <br />
+            <input
+              type="submit"
+              value="Register"
+            />
+          </form>,
+        ],
+        "className": "Register",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "Register",
+          },
+          "ref": null,
+          "rendered": "Register",
+          "type": "h1",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <input
+                name="first"
+                onChange={[Function]}
+                placeholder="First name"
+                type="text"
+              />,
+              <br />,
+              <input
+                name="last"
+                onChange={[Function]}
+                placeholder="Last name"
+                type="text"
+              />,
+              <br />,
+              <input
+                name="email"
+                onChange={[Function]}
+                placeholder="Email"
+                type="text"
+              />,
+              <br />,
+              <input
+                name="password"
+                onChange={[Function]}
+                placeholder="Password"
+                type="text"
+              />,
+              <br />,
+              <input
+                type="submit"
+                value="Register"
+              />,
+            ],
+            "onSubmit": [Function],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "name": "first",
+                "onChange": [Function],
+                "placeholder": "First name",
+                "type": "text",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": "input",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {},
+              "ref": null,
+              "rendered": null,
+              "type": "br",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "name": "last",
+                "onChange": [Function],
+                "placeholder": "Last name",
+                "type": "text",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": "input",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {},
+              "ref": null,
+              "rendered": null,
+              "type": "br",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "name": "email",
+                "onChange": [Function],
+                "placeholder": "Email",
+                "type": "text",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": "input",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {},
+              "ref": null,
+              "rendered": null,
+              "type": "br",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "name": "password",
+                "onChange": [Function],
+                "placeholder": "Password",
+                "type": "text",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": "input",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {},
+              "ref": null,
+              "rendered": null,
+              "type": "br",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "type": "submit",
+                "value": "Register",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": "input",
+            },
+          ],
+          "type": "form",
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getDerivedStateFromProps": true,
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+    "attachTo": undefined,
+    "hydrateIn": undefined,
+  },
+}
+`;
