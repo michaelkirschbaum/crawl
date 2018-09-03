@@ -7,3 +7,4 @@ describe('Register', () => {
     const component = shallow(<Register />)
     expect(component).toMatchSnapshot()
   })
+})

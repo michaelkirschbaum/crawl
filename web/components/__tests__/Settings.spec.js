@@ -7,3 +7,4 @@ describe('Settings', () => {
     const component = shallow(<Settings />)
     expect(component).toMatchSnapshot()
   })
+})
