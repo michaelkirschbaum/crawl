@@ -30,22 +30,24 @@ class Login extends Component {
   }
 
   handleSubmit() {
-    const { first, last } = this.state
+    const { email, password } = this.state
 
-    this.authenticate(first, last)
-      .then(() => this.setState({ redirect: true }))
-      .catch(err => console.log(err))
+    this.authenticate(email, password)
+    //   .then(() => this.setState({ redirect: true }))
+    //   .catch(err => console.log(err))
   }
 
-  authenticate(first, last) {
-    return new Promise (
+  authenticate(email, password) {
+    this.props.setAuthentication(true)
+    this.setState({ redirect: true })
+    /* return new Promise (
       function (resolve, reject) {
-        if (first && last)
-          resolve(first)
+        if (email && password)
+          resolve(email)
         else
           reject(new Error('authentication failed'))
       }
-    )
+    ) */
   }
 
   render() {
