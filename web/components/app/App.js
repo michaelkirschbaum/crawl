@@ -36,8 +36,8 @@ class App extends Component {
       <div>
         <Menu />
         <Switch>
-          <Route exact path='/' component={Dashboard}/>
           <Route path='/login' component={Login}/>
+          <ProtectedRoute exact path='/' component={Dashboard}/>
           <ProtectedRoute path='/account' auth={this.props.isAuthenticated} component={Account}/>
         </Switch>
       </div>
