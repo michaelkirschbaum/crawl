@@ -22,7 +22,8 @@ const mapStateToProps = state => {
 }
 
 const ProtectedRoute = ({ component: Component, path, auth }) => (
-  <Route {...path}
+  <Route
+    {...path}
     render={props => auth ? <Component /> : <Redirect to={{ pathname: '/login' }}/>}
   />
 )
@@ -34,7 +35,7 @@ class App extends Component {
         <Menu />
         <Switch>
           <Route path='/login' component={Login}/>
-          <ProtectedRoute exact path='/' component={Dashboard}/>
+          <ProtectedRoute path='/' auth={this.props.isAuthenticated} component={Dashboard}/>
           <ProtectedRoute path='/account' auth={this.props.isAuthenticated} component={Account}/>
         </Switch>
       </div>
