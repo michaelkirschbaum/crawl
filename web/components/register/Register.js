@@ -17,9 +17,9 @@ class Register extends Component {
   handleSubmit(event) {
     event.preventDefault()
 
-    var { first, last } = this.state
-    fetch(`http://localhost:8080/users/add?first=${first}&last=${last}`, { method: "POST" })
-      .then(res => console.log(res))
+    const { first, last, email, password } = this.state
+    fetch(`http://localhost:8080/users/add?first=${first}&last=${last}&email=${email}&password=${password}`, { method: "POST" })
+      .then(res => this.props.history.push('/'))
       .catch(err => console.log(err))
   }
 
@@ -35,7 +35,7 @@ class Register extends Component {
           <input type="text" name="first" onChange={this.onChange} placeholder="First name"/><br />
           <input type="text" name="last" onChange={this.onChange} placeholder="Last name"/><br />
           <input type="text" name="email" onChange={this.onChange} placeholder="Email"/><br />
-          <input type="text" name="password" onChange={this.onChange} placeholder="Password"/><br />
+          <input type="password" name="password" onChange={this.onChange} placeholder="Password"/><br />
           <input type="submit" value="Register"/>
         </form>
       </div>
