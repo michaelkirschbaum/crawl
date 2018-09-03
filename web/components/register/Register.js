@@ -14,8 +14,13 @@ class Register extends Component {
     this.onChange = this.onChange.bind(this)
   }
 
-  handleSubmit() {
+  handleSubmit(event) {
+    event.preventDefault()
 
+    var { first, last } = this.state
+    fetch(`http://localhost:8080/users/add?first=${first}&last=${last}`, { method: "POST" })
+      .then(res => console.log(res))
+      .catch(err => console.log(err))
   }
 
   onChange(event) {
