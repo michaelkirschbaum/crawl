@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Redirect } from 'react-router-dom'
+import { Redirect, Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { setAuthentication } from '../app/appActions'
 import './Login.css'
@@ -10,6 +10,14 @@ const mapDispatchToProps = dispatch => {
       dispatch(setAuthentication(status))
     }
   }
+}
+
+const RedirectButton = ({ route }) => {
+  return (
+    <button>
+      <Link style={{ textDecoration: 'none', color: '#000000' }} to={route}>Register</Link>
+    </button>
+  )
 }
 
 class Login extends Component {
@@ -65,6 +73,7 @@ class Login extends Component {
           <input type="text" name="password" onChange={this.onChange} placeholder="Password"/><br />
           <input type="submit" value="Login"/>
         </form>
+        <RedirectButton route="/register"/>
       </div>
     )
   }
