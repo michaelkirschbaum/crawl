@@ -37,25 +37,30 @@ class Login extends Component {
     this.setState({[event.target.name]: event.target.value})
   }
 
-  handleSubmit() {
-    const { email, password } = this.state
+  handleSubmit(event) {
+    event.preventDefault()
 
+    const { email, password } = this.state
     this.authenticate(email, password)
-    //   .then(() => this.setState({ redirect: true }))
-    //   .catch(err => console.log(err))
+      .then(res => {
+        console.log(res)
+        this.setState({ redirectToReferrer: true })
+      })
+      .catch(err => console.log(err))
   }
 
   authenticate(email, password) {
-    this.props.setAuthentication(true)
-    this.setState({ redirectToReferrer: true })
-    /* return new Promise (
+    return new Promise (
       function (resolve, reject) {
-        if (email && password)
-          resolve(email)
-        else
+        if (email && password) {
+          this.props.setAuthentication(true)
+          resolve("authentication successful")
+        }
+        else {
           reject(new Error('authentication failed'))
-      }
-    ) */
+        }
+      }.bind(this)
+    )
   }
 
   render() {
@@ -70,7 +75,7 @@ class Login extends Component {
         <h1>Login</h1>
         <form onSubmit={this.handleSubmit}>
           <input type="text" name="email" onChange={this.onChange} placeholder="Email"/><br />
-          <input type="text" name="password" onChange={this.onChange} placeholder="Password"/><br />
+          <input type="password" name="password" onChange={this.onChange} placeholder="Password"/><br />
           <input type="submit" value="Login"/>
         </form>
         <RedirectButton route="/register"/>
