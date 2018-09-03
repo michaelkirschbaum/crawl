@@ -1,9 +1,9 @@
 import React from 'react'
-import Register from '../../components/register/Register'
+import Settings from '../../components/settings/Settings'
 import { shallow } from 'enzyme'
 
-describe('register', () => {
+describe('Settings', () => {
   it('should render correctly', () => {
-    const component = shallow(<Register />)
+    const component = shallow(<Settings />)
     expect(component).toMatchSnapshot()
   })
