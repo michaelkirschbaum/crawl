@@ -5,5 +5,7 @@ CREATE DATABASE users_test;
 
 CREATE TABLE users (
   first VARCHAR,
-  last VARCHAR
+  last VARCHAR,
+  email VARCHAR,
+  password VARCHAR
 );
