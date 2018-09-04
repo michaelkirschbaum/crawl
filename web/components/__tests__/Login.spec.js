@@ -4,7 +4,7 @@ import { shallow } from 'enzyme'
 
 describe('Login', () => {
   it('should render correctly', () => {
-    const component = shallow(<Login />)
+    const component = shallow(<Login location={{ state: { pathname: '/'} }}/>)
     expect(component).toMatchSnapshot()
   })
 })
