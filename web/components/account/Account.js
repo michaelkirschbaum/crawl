@@ -2,7 +2,10 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { setAuthentication } from '../app/appActions'
+import fetchMock from 'fetch-mock'
 import "./Account.css"
+
+fetchMock.get('*', JSON.stringify({res: ''}))
 
 const mapDispatchToProps = dispatch => {
   return {
