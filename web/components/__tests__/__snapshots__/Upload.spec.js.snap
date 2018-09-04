@@ -22,7 +22,7 @@ ShallowWrapper {
           color="#000000"
           height={15}
           heightUnit="px"
-          loading={false}
+          loading={true}
           margin="2px"
           radius={2}
           radiusUnit="px"
@@ -67,7 +67,7 @@ ShallowWrapper {
           "color": "#000000",
           "height": 15,
           "heightUnit": "px",
-          "loading": false,
+          "loading": true,
           "margin": "2px",
           "radius": 2,
           "radiusUnit": "px",
@@ -185,7 +185,7 @@ ShallowWrapper {
             color="#000000"
             height={15}
             heightUnit="px"
-            loading={false}
+            loading={true}
             margin="2px"
             radius={2}
             radiusUnit="px"
@@ -230,7 +230,7 @@ ShallowWrapper {
             "color": "#000000",
             "height": 15,
             "heightUnit": "px",
-            "loading": false,
+            "loading": true,
             "margin": "2px",
             "radius": 2,
             "radiusUnit": "px",
