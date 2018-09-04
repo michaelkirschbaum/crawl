@@ -20,7 +20,7 @@ const RedirectButton = ({ route }) => {
   )
 }
 
-class Login extends Component {
+export class Login extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -46,13 +46,13 @@ class Login extends Component {
         console.log(res)
         this.setState({ redirectToReferrer: true })
       })
-      .catch(err => console.log(err))
+      .catch(err => alert(err))
   }
 
   authenticate(email, password) {
     return new Promise (
       function (resolve, reject) {
-        if (email && password) {
+        if (email == "hi@michaelkirschbaum.com" && password == "beethoven4@") {
           this.props.setAuthentication(true)
           resolve("authentication successful")
         }

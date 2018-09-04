@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './Register.css'
 
-class Register extends Component {
+export class Register extends Component {
   constructor(props) {
     super(props)
     this.state = {

@@ -9,7 +9,7 @@ const mapStateToProps = null
 
 const mapDispatchToProps = null
 
-class Upload extends Component {
+export class Upload extends Component {
   constructor(props) {
     super(props)
     this.state = {

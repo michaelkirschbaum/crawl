@@ -1,5 +1,5 @@
 import React from 'react'
-import Upload from '../../components/upload/Upload'
+import { Upload } from '../../components/upload/Upload'
 import fetchMock from 'fetch-mock'
 import { shallow } from 'enzyme'
 
