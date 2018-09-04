@@ -12,7 +12,7 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-class Account extends Component {
+export class Account extends Component {
   constructor(props) {
     super(props)
     this.state = {
