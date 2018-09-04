@@ -17,9 +17,6 @@ ShallowWrapper {
     "nodeType": "host",
     "props": Object {
       "children": Array [
-        <h1>
-          Projects
-        </h1>,
         <onlyUpdateForKeys(Loader)
           className=""
           color="#000000"
@@ -32,18 +29,21 @@ ShallowWrapper {
           width={5}
           widthUnit="px"
         />,
+        <h1>
+          Projects
+        </h1>,
         <ul />,
         <form
           onSubmit={[Function]}
         >
-          Name: 
           <input
             name="name"
             onChange={[Function]}
+            placeholder="Name"
             type="text"
           />
           <input
-            accept="image/jpeg"
+            accept="image/png"
             name="mockup"
             onChange={[Function]}
             type="file"
@@ -58,17 +58,6 @@ ShallowWrapper {
     },
     "ref": null,
     "rendered": Array [
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "host",
-        "props": Object {
-          "children": "Projects",
-        },
-        "ref": null,
-        "rendered": "Projects",
-        "type": "h1",
-      },
       Object {
         "instance": null,
         "key": undefined,
@@ -94,6 +83,17 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "host",
         "props": Object {
+          "children": "Projects",
+        },
+        "ref": null,
+        "rendered": "Projects",
+        "type": "h1",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
           "children": Array [],
         },
         "ref": null,
@@ -106,14 +106,14 @@ ShallowWrapper {
         "nodeType": "host",
         "props": Object {
           "children": Array [
-            "Name: ",
             <input
               name="name"
               onChange={[Function]}
+              placeholder="Name"
               type="text"
             />,
             <input
-              accept="image/jpeg"
+              accept="image/png"
               name="mockup"
               onChange={[Function]}
               type="file"
@@ -127,7 +127,6 @@ ShallowWrapper {
         },
         "ref": null,
         "rendered": Array [
-          "Name: ",
           Object {
             "instance": null,
             "key": undefined,
@@ -135,6 +134,7 @@ ShallowWrapper {
             "props": Object {
               "name": "name",
               "onChange": [Function],
+              "placeholder": "Name",
               "type": "text",
             },
             "ref": null,
@@ -146,7 +146,7 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "host",
             "props": Object {
-              "accept": "image/jpeg",
+              "accept": "image/png",
               "name": "mockup",
               "onChange": [Function],
               "type": "file",
@@ -180,9 +180,6 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": Array [
-          <h1>
-            Projects
-          </h1>,
           <onlyUpdateForKeys(Loader)
             className=""
             color="#000000"
@@ -195,18 +192,21 @@ ShallowWrapper {
             width={5}
             widthUnit="px"
           />,
+          <h1>
+            Projects
+          </h1>,
           <ul />,
           <form
             onSubmit={[Function]}
           >
-            Name: 
             <input
               name="name"
               onChange={[Function]}
+              placeholder="Name"
               type="text"
             />
             <input
-              accept="image/jpeg"
+              accept="image/png"
               name="mockup"
               onChange={[Function]}
               type="file"
@@ -221,17 +221,6 @@ ShallowWrapper {
       },
       "ref": null,
       "rendered": Array [
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "children": "Projects",
-          },
-          "ref": null,
-          "rendered": "Projects",
-          "type": "h1",
-        },
         Object {
           "instance": null,
           "key": undefined,
@@ -257,6 +246,17 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "host",
           "props": Object {
+            "children": "Projects",
+          },
+          "ref": null,
+          "rendered": "Projects",
+          "type": "h1",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
             "children": Array [],
           },
           "ref": null,
@@ -269,14 +269,14 @@ ShallowWrapper {
           "nodeType": "host",
           "props": Object {
             "children": Array [
-              "Name: ",
               <input
                 name="name"
                 onChange={[Function]}
+                placeholder="Name"
                 type="text"
               />,
               <input
-                accept="image/jpeg"
+                accept="image/png"
                 name="mockup"
                 onChange={[Function]}
                 type="file"
@@ -290,7 +290,6 @@ ShallowWrapper {
           },
           "ref": null,
           "rendered": Array [
-            "Name: ",
             Object {
               "instance": null,
               "key": undefined,
@@ -298,6 +297,7 @@ ShallowWrapper {
               "props": Object {
                 "name": "name",
                 "onChange": [Function],
+                "placeholder": "Name",
                 "type": "text",
               },
               "ref": null,
@@ -309,7 +309,7 @@ ShallowWrapper {
               "key": undefined,
               "nodeType": "host",
               "props": Object {
-                "accept": "image/jpeg",
+                "accept": "image/png",
                 "name": "mockup",
                 "onChange": [Function],
                 "type": "file",
