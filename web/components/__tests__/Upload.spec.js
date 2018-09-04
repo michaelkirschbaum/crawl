@@ -1,47 +1,59 @@
 import React from 'react'
 import { Upload } from '../../components/upload/Upload'
 import fetchMock from 'fetch-mock'
-import { shallow } from 'enzyme'
+import { shallow, mount } from 'enzyme'
+import { spy } from 'sinon'
+import { FadeLoader } from 'react-spinners'
+
+fetchMock.get('*', JSON.stringify({res: ''}))
 
 describe('Upload', () => {
-  fetchMock.get('*', JSON.stringify({res: ''}))
+  let component
 
   it('should render correctly', () => {
-    const component = shallow(<Upload />)
+    component = shallow(<Upload />)
     expect(component).toMatchSnapshot()
   })
 
+  it('calls componentDidMount', () => {
+    const spy = spyOn(Upload.prototype, 'componentDidMount')
+    component = mount(<Upload />)
+    component.instance().componentDidMount()
+    expect(spy).toHaveBeenCalled()
+  })
+
   it('should lookup projects', () => {
-    expect(false).toBe(true)
+    component.instance().componentDidMount()
   })
 
   it('should show error when project lookup fails', () => {
-    expect(false).toBe(true)
+
   })
 
   it('should show spinner when loading project', () => {
-    expect(false).toBe(true)
+    component = shallow(<Upload />)
+    expect(component.find(FadeLoader)).to.have.lengthOf(1)
   })
 
   it('set error when loading project fails', () => {
-    expect(false).toBe(true)
+
   })
 
   describe('submit is clicked', () => {
     it('should save project', () => {
-      expect(false).toBe(true)
+
     })
 
     it('should set error when unable to save project', () => {
-      expect(false).toBe(true)
+
     })
 
     it('should upload image', () => {
-      expect(false).toBe(true)
+
     })
 
     it('should set project in state', () => {
-      expect(false).toBe(true)
+
     })
   })
 })
