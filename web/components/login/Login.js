@@ -52,7 +52,7 @@ export class Login extends Component {
   authenticate(email, password) {
     return new Promise (
       function (resolve, reject) {
-        if (email == "hi@michaelkirschbaum.com" && password == "beethoven4@") {
+        if (email == "" && password == "") {
           this.props.setAuthentication(true)
           resolve("authentication successful")
         }
