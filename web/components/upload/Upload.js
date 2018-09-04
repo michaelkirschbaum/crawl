@@ -25,9 +25,12 @@ export class Upload extends Component {
     this.onFileChange = this.onFileChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.getImage = this.getImage.bind(this)
+    this.loadProjects = this.loadProjects.bind(this)
   }
 
   componentDidMount() {
+    this.loadProjects()
+
     // get projects
     fetch('http://localhost:8081/mockups/get')
       .then(res => res.json())
@@ -101,6 +104,10 @@ export class Upload extends Component {
           .catch(err => console.error(err))
       })
       .catch(err => console.error(err))
+  }
+
+  loadProjects() {
+    this.setState({ isLoading: true })
   }
 
   getImage(fileName) {
