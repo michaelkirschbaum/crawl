@@ -2,5 +2,7 @@ node_modules
 dist
 coverage
 yarn-error.log
+launch.json
 .gitignore
 .nyc_output
+.vscode

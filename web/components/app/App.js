@@ -7,12 +7,11 @@ import Login from '../login/Login'
 import Menu from '../menu/Menu'
 import Register from '../register/Register'
 import {
-  Link,
   BrowserRouter as Router,
   Switch,
   Route,
   withRouter,
-  Redirect
+  Redirect,
 } from 'react-router-dom'
 import './App.css'
 

@@ -14,9 +14,11 @@ const mapDispatchToProps = dispatch => {
 
 const RedirectButton = ({ route }) => {
   return (
-    <button>
-      <Link style={{ textDecoration: 'none', color: '#000000' }} to={route}>Register</Link>
-    </button>
+    <Link style={{ textDecoration: 'none', color: '#000000' }} to={route}>
+      <button>
+        Register
+      </button>
+    </Link>
   )
 }
 
